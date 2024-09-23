@@ -1,50 +1,43 @@
-# React + TypeScript + Vite
+# echo screen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div aling="center" style="display: flex; align-items: center; gap: 30px; margin: 10px auto; max-height: 150px;">
+  <a href="https://sanity.io" target="_blank" rel="noopener">
+    <img src="https://cdn.sanity.io/images/3do82whm/next/51af00784c5addcf63ae7f0c416756acca7e63ac-353x71.svg?dl=sanity-logo.svg" width="180" alt="Powered by Sanity" />
+  </a>
+</div>
 
-Currently, two official plugins are available:
+Infoskjerm på lesesalen til **echo – Linjeforeningen for informatikk** ved Universitetet i Bergen.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Utviklet av frivillige informatikkstudenter fra undergruppen **echo Webkom**.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tilbakemeldinger
 
-- Configure the top-level `parserOptions` property like this:
+Har du noen tilbakemeldinger til nettsiden?
+Vi jobber hele tiden med å forbedre den,
+og setter stor pris på om du sier ifra om noe er feil,
+eller du har idéer til nye endringer!
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Send oss gjerne en tilbakemelding via skjemaet på https://echo.uib.no/tilbakemelding,
+eller send oss en mail på [webkom-styret@echo.uib.no](mailto:webkom-styret@echo.uib.no).
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Hvordan kjøre?
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Last ned "dependencies"
+
+   ```sh
+   pnpm install
+   ```
+
+
+1. Start utviklingsmiljøet
+
+   ```sh
+    pnpm dev
+   ```
+
+Sidene som starter er:
+
+- [http://localhost:5173](http://localhost:5173) for nettsiden
+
