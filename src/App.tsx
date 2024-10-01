@@ -8,7 +8,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="m-16">
-        <h1>Info her</h1>
+        <h1>Masse info her</h1>
         <Calender />
       </div>
     </QueryClientProvider>
