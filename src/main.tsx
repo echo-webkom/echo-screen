@@ -5,8 +5,6 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="m-16">
-      <App />
-    </div>
+    <App />
   </StrictMode>
 );

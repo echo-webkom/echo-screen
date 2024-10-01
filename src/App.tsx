@@ -1,12 +1,16 @@
+import { useState } from "react";
 import Calender from "./components/calender";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-function App() {
+export default function App() {
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
-    <>
-      <h1>Info her</h1>
-      <Calender />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <div className="m-16">
+        <h1>Info her</h1>
+        <Calender />
+      </div>
+    </QueryClientProvider>
   );
 }
-
-export default App;
