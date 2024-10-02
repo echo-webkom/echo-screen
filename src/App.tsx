@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Calender from "./components/calender";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import DateTime from "./components/date-time";
+import BentoScreen from "./components/bento-screen";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -8,8 +9,10 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="m-16">
-        <h1>Masse info her</h1>
-        <Calender />
+        <div>
+          <DateTime />
+        </div>
+          <BentoScreen/>
       </div>
     </QueryClientProvider>
   );

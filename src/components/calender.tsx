@@ -11,9 +11,8 @@ export default function Calender() {
   const { happenings } = useUpcomingHappenings(happeningTypes);
 
   return (
-    <div>
+    <div className="border-2 rounded-md border-black">
       <h2>Calender</h2>
-      <p>{happeningTypes.toString()}</p>
       <button
         className="px-2 py-1 rounded-lg border"
         onClick={() => setHappeningTypes(["bedpres"])}
