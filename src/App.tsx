@@ -12,7 +12,7 @@ export default function App() {
         <div>
           <DateTime />
         </div>
-          <BentoScreen/>
+        <BentoScreen />
       </div>
     </QueryClientProvider>
   );
