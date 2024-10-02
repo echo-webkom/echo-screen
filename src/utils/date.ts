@@ -1,23 +1,22 @@
-  export type Dateish = Date | string | number;
-  
+import { format } from "date-fns";
+
+export type Dateish = Date | string | number;
+
 /**
- * Converts a date to a short date string.
- *
- * @example
- * Example: "1. jan. 2020, 12:00"
- *
- * @param date date to convert
- * @returns the date in short format
+ * From a date, return a string formatted as "Weekday, day. month"
+ * @param date
+ * @returns Weekday, day. month
  */
-export const shortDate = (date: Dateish | string) => {
-    const d = new Date(date);
-  
-    return d.toLocaleTimeString("nb-NO", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      timeZone: "Europe/Oslo",
-    });
-  };
+export const weekdayAndDate = (date: Date | string) => {
+  const d = new Date(date);
+
+  return d.toLocaleDateString("nb-NO", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+export const onlyTimeHHMM = (date: Dateish) => {
+  return format(new Date(date), "HH:mm");
+};

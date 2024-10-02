@@ -1,11 +1,18 @@
-import { shortDate } from "../utils/date";
+import { onlyTimeHHMM, weekdayAndDate } from "../utils/date";
 
 export default function DateTime() {
-  const dateTime = Date.now();
-  const formatedTime = shortDate(dateTime.toString());
+  const today = new Date();
+  const formattedTime = onlyTimeHHMM(today);
+  const formattedDate =
+    weekdayAndDate(today).charAt(0).toUpperCase() +
+    weekdayAndDate(today).slice(1);
+
   return (
     <div>
-      <h1 className="text-4xl bg-red-600">{formatedTime}</h1>
+      <h1 className="text-4xl text-white flex justify-between">
+        <p>{formattedDate}</p>
+        <p>{formattedTime}</p>
+      </h1>
     </div>
   );
 }
