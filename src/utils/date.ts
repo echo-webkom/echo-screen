@@ -1,14 +1,4 @@
-import {
-  differenceInHours,
-  format,
-  isAfter,
-  isBefore,
-  isFuture,
-  isPast,
-  nextMonday,
-  startOfDay,
-} from "date-fns";
-import { nb } from "date-fns/locale/nb";
+import { format } from "date-fns";
 
 export type Dateish = Date | string | number;
 
