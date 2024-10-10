@@ -6,6 +6,9 @@
   :root {
     --background: #f9fafb;
     --foreground: #171923;
+    
+    --muted: #ebeef4;
+    --muted-foreground: #64748b;
 
     --border: #9db2cd;
 

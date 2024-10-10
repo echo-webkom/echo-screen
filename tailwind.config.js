@@ -6,10 +6,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-forground)",
+        },
         primary: "var(--primary)",
         secondary: "var(--secondary)",
-        border: "var(--border)"
-      }
+        border: "var(--border)",
+      },
     },
   },
   plugins: [],
