@@ -11,11 +11,17 @@ export function useUpcomingHappenings(
     queryFn: async () => {
       return await sanity.fetch<
         Array<{
+          date: string | number | Date;
+          endDate: string | number | Date;
           _id: string;
           title: string;
         }>
       >(
-        `*[_type == "happening" && date > now() && happeningType in $happeningTypes] | order(date asc)`,
+        `*[_type == "happening" && date > now() && happeningType in $happeningTypes] | order(date asc){
+          "date": date,
+          "endDate": endDate,
+          }
+        `,
         {
           happeningTypes,
         }
