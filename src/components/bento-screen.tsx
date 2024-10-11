@@ -1,4 +1,5 @@
 import Calendar from "./calendar";
+import SkyssTimeTable from "./skyss-time-table";
 
 export default function BentoScreen() {
   return (
@@ -9,8 +10,8 @@ export default function BentoScreen() {
       <div className="border-2 rounded-lg col-span-3 row-span-4">
         Dagens bursdag
       </div>
-      <div className="border-2 rounded-lg col-span-4 row-span-4">
-        Dagens bursdag
+      <div className="border-2 overflow-hidden rounded-lg col-span-4 row-span-6">
+        <SkyssTimeTable/>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { onlyTimeHHMM, weekdayAndDate } from "../utils/date";
+import { weekdayAndDate } from "../utils/date";
 
 export default function DateTime() {
   const [currentTime, setCurrentTime] = useState(new Date());
