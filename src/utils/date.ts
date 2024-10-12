@@ -25,7 +25,6 @@ export const yearMonthDateNoDay = (date: Date | string) => {
     day: "numeric",
     month: "short",
     year: "numeric",
-
   });
 };
 
@@ -36,6 +35,10 @@ export const onlyTimeHHMM = (date: Dateish) => {
 export const onlyDayName = (date: Dateish) => {
   const d = new Date(date);
   return capitalize(format(d, "EEEE", { locale: nb }));
+};
+
+export const shortDate = (date: Dateish) => {
+  return capitalize(format(date, "EEE. d. MMM", { locale: nb })); // Using Norwegian locale
 };
 
 export const capitalize = (string: string) => {

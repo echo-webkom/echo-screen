@@ -1,51 +1,60 @@
-  import { useUpcomingHappenings } from "../hooks/use-upcoming-happenings";
-
-import { addDays, isSameDay, startOfWeek } from "date-fns";
-import { onlyDayName, yearMonthDateNoDay } from "../utils/date";
-
+import { useState } from "react";
+import {
+  HappeningType,
+  useUpcomingHappenings,
+} from "../hooks/use-upcoming-happenings";
+import { onlyTimeHHMM, shortDate } from "../utils/date";
+import { isSameDay } from "date-fns";
 
 export default function Calendar() {
-  const { happenings } = useUpcomingHappenings([
+  const [happeningTypes] = useState<Array<HappeningType>>([
     "bedpres",
     "event",
     "external",
   ]);
-  const date = startOfWeek(new Date(), { weekStartsOn: 1 });
-  const days = Array.from({ length: 7 }, (_, i) => addDays(date, i));
+  const { happenings } = useUpcomingHappenings(happeningTypes);
+  const today = new Date();
+  const weekdates = Array.from({ length: 7 }, (_, i) => {
+    const date = new Date();
+    date.setDate(today.getDate() + i);
+    return date;
+  });
+
   return (
-    <div className="h-full">
-      <div className="grid grid-cols-7 h-full ">
-        {days.map((day) => {
-          const isToday = isSameDay(day, new Date());
-          const isFirstDay = isSameDay(date, day);
-          const happeningsThisDay = happenings?.filter((happening) => {
-            return happening.date ? isSameDay(happening.date, day) : "Ingenting"
-           
-          });
-          return (
-            <div
-              key={day.toString()}
-              className={`${isFirstDay ? "" : "border-l"}`}
-            >
-              <div className="border-b-2 flex justify-center font-medium bg-muted h-16 text-lg">
-                {isToday ? (
-                  <p className="py-4">I dag</p>
-                ) : (
-                  <div className="flex flex-col justify-center items-center">
-                    <p>{onlyDayName(day)}</p>
-                    <p>{yearMonthDateNoDay(day)}</p>
-                  </div>
-                )}
-              </div> {happeningsThisDay?.map((happening) => {
+    <div className="text-center h-full border-2 rounded-md">
+      <div className="grid grid-cols-7 h-full divide-x">
+        {weekdates.map((date) => (
+          <div key={date.toString()}>
+            <p className="border-b p-1 my-auto font-semibold">
+              {date.toDateString() == new Date().toDateString()
+                ? "I dag"
+                : shortDate(date)}
+            </p>
+            <div className="space-y-3 p-1">
+              {happenings?.map((happening) => {
+                const happeningDate = new Date(happening.date);
+                const currentDate = date;
                 return (
-                  <div key={happening._id}>
-                    <h1>{happening.title}</h1>
-                  </div>
+                  isSameDay(happeningDate, currentDate) && (
+                    <div
+                      key={happening._id}
+                      className={`h-10 border-l-4 pl-1 ${
+                        happening.happeningType == "bedpres"
+                          ? "border-primary"
+                          : "border-secondary"
+                      }`}
+                    >
+                      <p className="text-gray-500 text-xs">{happening.title}</p>
+                      <p className=" text-gray-500 text-xs">
+                        {onlyTimeHHMM(happening.date)}
+                      </p>
+                    </div>
+                  )
                 );
               })}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
