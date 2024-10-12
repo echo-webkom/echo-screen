@@ -14,6 +14,7 @@ export default function Calendar() {
   ]);
   const { happenings } = useUpcomingHappenings(happeningTypes);
   const today = new Date();
+
   const weekdates = Array.from({ length: 7 }, (_, i) => {
     const date = new Date();
     date.setDate(today.getDate() + i);
@@ -21,11 +22,11 @@ export default function Calendar() {
   });
 
   return (
-    <div className="text-center h-full border-2 rounded-md">
+    <div className="text-center h-full rounded-md">
       <div className="grid grid-cols-7 h-full divide-x">
         {weekdates.map((date) => (
           <div key={date.toString()}>
-            <p className="border-b p-1 my-auto font-semibold">
+            <p className="border-b bg-muted p-1 my-auto font-semibold">
               {date.toDateString() == new Date().toDateString()
                 ? "I dag"
                 : shortDate(date)}
@@ -38,14 +39,14 @@ export default function Calendar() {
                   isSameDay(happeningDate, currentDate) && (
                     <div
                       key={happening._id}
-                      className={`h-10 border-l-4 pl-1 ${
+                      className={`border-l-4 pl-1 text-left space-y-1 ${
                         happening.happeningType == "bedpres"
                           ? "border-primary"
                           : "border-secondary"
                       }`}
                     >
-                      <p className="text-gray-500 text-xs">{happening.title}</p>
-                      <p className=" text-gray-500 text-xs">
+                      <p className=" text-sm line-clamp-2">{happening.title}</p>
+                      <p className=" text-gray-400 text-xs">
                         {onlyTimeHHMM(happening.date)}
                       </p>
                     </div>

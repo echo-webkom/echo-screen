@@ -26,9 +26,7 @@ export function useUpcomingHappenings(
           endDate,
           "registrationStart": registrationStart,
         }`,
-        {
-          happeningTypes,
-        }
+        { happeningTypes }
       );
     },
   });
