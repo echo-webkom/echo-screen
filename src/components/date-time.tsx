@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { onlyTimeHHMM, weekdayAndDate } from "../utils/date";
+import { weekdayAndDate } from "../utils/date";
 
 export default function DateTime() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -12,13 +12,13 @@ export default function DateTime() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const formattedTime = currentTime.toLocaleTimeString([], { 
-    hour: '2-digit', 
-    minute: '2-digit', 
-    second: '2-digit', 
+  const formattedTime = currentTime.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
     hour12: false
   });
-  
+
   const formattedDate =
     weekdayAndDate(currentTime).charAt(0).toUpperCase() +
     weekdayAndDate(currentTime).slice(1);
