@@ -38,11 +38,11 @@ export const onlyDayName = (date: Dateish) => {
 };
 
 export const shortDate = (date: Dateish) => {
-  return capitalize(format(date, "EEE. d. MMM", { locale: nb })); // Using Norwegian locale
+  return capitalize(format(date, "EEE. d. MMM", { locale: nb }));
 };
 
 export const dateAndTime = (date: Dateish) => {
-  return capitalize(format(date, "d. MMM HH:mm", { locale: nb })); // Using Norwegian locale
+  return capitalize(format(date, "d. MMM HH:mm", { locale: nb }));
 };
 
 export const capitalize = (string: string) => {

@@ -35,8 +35,6 @@ export function MovieCard() {
                 </p>
               </div>
             </div>
-
-            {/* Bottom section with additional info */}
             <div>
               <p className="text-muted-foreground text-sm">
                 Ingen påmelding og gratis snacks
