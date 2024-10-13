@@ -1,5 +1,6 @@
 import BedpressCountDown from "./bedpress-count-down";
 import Calendar from "./calendar";
+import { MovieCard } from "./MovieCard";
 
 export default function BentoScreen() {
   return (
@@ -9,6 +10,10 @@ export default function BentoScreen() {
       </div>
       <div className="border-2 rounded-lg col-span-3 row-span-4">
         <BedpressCountDown />
+        Dagens bursdag
+      </div>
+      <div className="border-2 rounded-lg col-span-4 row-span-4">
+        <MovieCard />
       </div>
     </div>
   );
