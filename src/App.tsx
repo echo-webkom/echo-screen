@@ -8,7 +8,7 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="p-8 space-y-2">
+      <div className="p-8 pb-0 space-y-2">
         <div>
           <DateTime />
         </div>
