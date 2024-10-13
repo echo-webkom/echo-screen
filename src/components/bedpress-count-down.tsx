@@ -14,7 +14,7 @@ export default function BedpressCountDown() {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [nextBedpresDate]);
 
   const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   const hours = Math.floor(
