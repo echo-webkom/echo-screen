@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@sanity/client": "^6.22.0",
+    "@sanity/image-url": "^1.0.2",
     "@tanstack/react-query": "^5.56.2",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.5.6",
