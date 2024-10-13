@@ -25,6 +25,7 @@ export function useUpcomingHappenings(
           date,
           endDate,
           "registrationStart": registrationStart,
+          happeningType
         }`,
         { happeningTypes }
       );

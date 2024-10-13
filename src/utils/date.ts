@@ -41,6 +41,10 @@ export const shortDate = (date: Dateish) => {
   return capitalize(format(date, "EEE. d. MMM", { locale: nb })); // Using Norwegian locale
 };
 
+export const dateAndTime = (date: Dateish) => {
+  return capitalize(format(date, "d. MMM HH:mm", { locale: nb })); // Using Norwegian locale
+};
+
 export const capitalize = (string: string) => {
   return string.charAt(0).toLocaleUpperCase() + string.slice(1);
 };

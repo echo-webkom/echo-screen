@@ -5,6 +5,7 @@ import {
 } from "../hooks/use-upcoming-happenings";
 import { onlyTimeHHMM, shortDate } from "../utils/date";
 import { isSameDay } from "date-fns";
+import { useNextMovie } from "../hooks/use-upcoming-movies";
 
 export default function Calendar() {
   const [happeningTypes] = useState<Array<HappeningType>>([
@@ -12,12 +13,14 @@ export default function Calendar() {
     "event",
     "external",
   ]);
+
   const { happenings } = useUpcomingHappenings(happeningTypes);
+  const { data: nextMovie } = useNextMovie(); // Fetch the next movie
   const today = new Date();
 
   const weekdates = Array.from({ length: 7 }, (_, i) => {
     const date = new Date();
-    date.setDate(today.getDate() + i);
+    date.setDate(today.getDate() + i + 7);
     return date;
   });
 
@@ -35,6 +38,7 @@ export default function Calendar() {
               {happenings?.map((happening) => {
                 const happeningDate = new Date(happening.date);
                 const currentDate = date;
+
                 return (
                   isSameDay(happeningDate, currentDate) && (
                     <div
@@ -45,14 +49,24 @@ export default function Calendar() {
                           : "border-secondary"
                       }`}
                     >
-                      <p className=" text-sm line-clamp-2">{happening.title}</p>
-                      <p className=" text-gray-400 text-xs">
+                      <p className="text-sm line-clamp-2">{happening.title}</p>
+                      <p className="text-gray-400 text-xs">
                         {onlyTimeHHMM(happening.date)}
                       </p>
                     </div>
                   )
                 );
               })}
+              {nextMovie && isSameDay(nextMovie.date, date) && (
+                <div className="border-l-4 pl-1 text-left space-y-1 border-pink-400">
+                  <p className="text-sm line-clamp-2">
+                    {"Film: " + nextMovie.title}
+                  </p>
+                  <p className="text-gray-400 text-xs">
+                    {onlyTimeHHMM(nextMovie.date)}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         ))}
