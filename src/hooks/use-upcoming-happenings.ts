@@ -16,6 +16,7 @@ export function useUpcomingHappenings(
           date: string | number | Date;
           endDate: string | number | Date;
           registrationStart: string | null;
+          happeningType: HappeningType;
         }>
       >(
         `*[_type == "happening" && date > now() && happeningType in $happeningTypes] | order(date asc){
@@ -24,10 +25,9 @@ export function useUpcomingHappenings(
           date,
           endDate,
           "registrationStart": registrationStart,
+          happeningType
         }`,
-        {
-          happeningTypes,
-        }
+        { happeningTypes }
       );
     },
   });
