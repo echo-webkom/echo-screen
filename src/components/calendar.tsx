@@ -20,7 +20,7 @@ export default function Calendar() {
 
   const weekdates = Array.from({ length: 7 }, (_, i) => {
     const date = new Date();
-    date.setDate(today.getDate() + i + 7);
+    date.setDate(today.getDate() + i);
     return date;
   });
 
