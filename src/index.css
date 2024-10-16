@@ -1,26 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: #f9fafb;
-    --foreground: #171923;
+    --background: 58	20%	98%; 
+    --foreground: 231 16% 12%; 
     
-    --muted: #ebeef4;
-    --muted-foreground: #64748b;
+    --muted: 213 34% 93%;
+    --muted-foreground: 215 22% 43%; 
 
-    --border: #9db2cd;
+    --border: 214 32% 73%; 
 
-    --primary: #008fa3;
-    --secondary: #fed879;
+    --primary: 186 100% 32%; 
+    --secondary: 42 96% 72%;
   }
 }
 
+
 * {
-    @apply border-border  ;
+    @apply border-border;
   }
 
 body {
-    @apply text-foreground bg-primary;
+    @apply text-foreground/90 font-sans bg-gradient-to-tl from-primary/50 to-secondary/50 h-screen ;
   }
