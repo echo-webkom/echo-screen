@@ -25,16 +25,16 @@ export default function Calendar() {
   });
 
   return (
-    <div className="text-center rounded-lg bg-background">
+    <div className="text-center rounded-lg bg-background/70 border-2 overflow-hidden shadow-lg">
       <div className="grid grid-cols-7 h-full divide-x ">
         {weekdates.map((date) => (
           <div key={date.toString()}>
-            <p className="border-b bg-muted p-1 my-auto font-semibold rounded-t-lg">
+            <p className="border-b bg-muted p-1 my-auto font-semibold">
               {date.toDateString() == new Date().toDateString()
                 ? "I dag"
                 : shortDate(date)}
             </p>
-            <div className="space-y-3 p-1 ">
+            <div className="space-y-3 p-1">
               {happenings?.map((happening) => {
                 const happeningDate = new Date(happening.date);
                 const currentDate = date;
@@ -49,7 +49,7 @@ export default function Calendar() {
                           : "border-secondary"
                       }`}
                     >
-                      <p className="text-sm line-clamp-2">{happening.title}</p>
+                      <p className="text-sm line-clamp-1">{happening.title}</p>
                       <p className="text-gray-400 text-xs">
                         {onlyTimeHHMM(happening.date)}
                       </p>
@@ -59,7 +59,7 @@ export default function Calendar() {
               })}
               {nextMovie && isSameDay(nextMovie.date, date) && (
                 <div className="border-l-4 pl-1 text-left space-y-1 border-pink-400">
-                  <p className="text-sm line-clamp-2">
+                  <p className="text-sm line-clamp-1">
                     {"Film: " + nextMovie.title}
                   </p>
                   <p className="text-gray-400 text-xs">

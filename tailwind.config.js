@@ -1,18 +1,25 @@
+import {fontFamily} from "tailwindcss/defaultTheme"
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      sans: [
+        "Inter", ...fontFamily.sans
+      ]
+    },
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-forground)",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-forground))",
         },
-        primary: "var(--primary)",
-        secondary: "var(--secondary)",
-        border: "var(--border)",
+        primary: "hsl(var(--primary))",
+        secondary: "hsl(var(--secondary))",
+        border: "hsl(var(--border))"
       },
     },
   },

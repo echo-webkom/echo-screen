@@ -26,7 +26,7 @@ export default function BedpressCountDown() {
   return (
     <>
       {happenings ? (
-        <div className="text-center rounded-lg px-10 bg-background">
+        <div className="text-center rounded-lg px-10 bg-background/70 border-2 shadow-lg">
           <h1 className="font-semibold text-4xl pt-6 pb-10">
             {happenings?.at(0)?.title}
           </h1>
