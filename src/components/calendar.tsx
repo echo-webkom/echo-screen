@@ -15,7 +15,7 @@ export default function Calendar() {
   ]);
 
   const { happenings } = useUpcomingHappenings(happeningTypes);
-  const { data: nextMovie } = useNextMovie(); // Fetch the next movie
+  const { data: nextMovie } = useNextMovie();
   const today = new Date();
 
   const weekdates = Array.from({ length: 7 }, (_, i) => {
@@ -25,16 +25,16 @@ export default function Calendar() {
   });
 
   return (
-    <div className="text-center h-full rounded-md">
-      <div className="grid grid-cols-7 h-full divide-x">
+    <div className="text-center rounded-lg bg-background">
+      <div className="grid grid-cols-7 h-full divide-x ">
         {weekdates.map((date) => (
           <div key={date.toString()}>
-            <p className="border-b bg-muted p-1 my-auto font-semibold">
+            <p className="border-b bg-muted p-1 my-auto font-semibold rounded-t-lg">
               {date.toDateString() == new Date().toDateString()
                 ? "I dag"
                 : shortDate(date)}
             </p>
-            <div className="space-y-3 p-1">
+            <div className="space-y-3 p-1 ">
               {happenings?.map((happening) => {
                 const happeningDate = new Date(happening.date);
                 const currentDate = date;

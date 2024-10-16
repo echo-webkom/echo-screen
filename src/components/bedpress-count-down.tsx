@@ -25,34 +25,36 @@ export default function BedpressCountDown() {
 
   return (
     <>
-    {happenings ? (
-      <div className=" text-center">
-        <h1 className="font-semibold text-4xl pt-6 pb-6">
-          {happenings?.at(0)?.title}
-        </h1>
-        <p className="pb-2">Påmelding om:</p>
-        <div className="flex justify-center space-x-10">
-          <div className="flex flex-col justify-center w-8">
-            <h1 className="font-semibold text-2xl">{days}</h1>
-            <p className="text-xs">Dager</p>
-          </div>
-          <div className="flex flex-col justify-center w-8">
-            <h1 className="font-semibold text-2xl">{hours}</h1>
-            <p className="text-xs">Timer</p>
-          </div>
-          <div className="flex flex-col justify-center w-8">
-            <h1 className="font-semibold text-2xl">{minutes}</h1>
-            <p className="text-xs">Min</p>
-          </div>
-          <div className="flex flex-col justify-center w-8">
-            <h1 className="font-semibold text-2xl">{seconds}</h1>
-            <p className="text-xs">Sek</p>
+      {happenings ? (
+        <div className="text-center rounded-lg px-10 bg-background">
+          <h1 className="font-semibold text-4xl pt-6 pb-10">
+            {happenings?.at(0)?.title}
+          </h1>
+          <p className="pb-2">Påmelding om:</p>
+          <div className="flex justify-center space-x-10">
+            <div className="flex flex-col justify-center w-8">
+              <h1 className="font-semibold text-2xl">{days}</h1>
+              <p className="text-xs">Dager</p>
+            </div>
+            <div className="flex flex-col justify-center w-8">
+              <h1 className="font-semibold text-2xl">{hours}</h1>
+              <p className="text-xs">Timer</p>
+            </div>
+            <div className="flex flex-col justify-center w-8">
+              <h1 className="font-semibold text-2xl">{minutes}</h1>
+              <p className="text-xs">Min</p>
+            </div>
+            <div className="flex flex-col justify-center w-8">
+              <h1 className="font-semibold text-2xl">{seconds}</h1>
+              <p className="text-xs">Sek</p>
+            </div>
           </div>
         </div>
-      </div>
-    ) : (
-      <h1 className="flex justify-center pt-20 font-semibold text-lg">Ingen bedriftspresentasjoner {`:(`}</h1>
-    )}
+      ) : (
+        <h1 className="flex justify-center pt-20 font-semibold text-lg">
+          Ingen bedriftspresentasjoner {`:(`}
+        </h1>
+      )}
     </>
   );
 }
