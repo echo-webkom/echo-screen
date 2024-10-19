@@ -9,17 +9,20 @@ export function useUpcomingHappenings(
   const { data: happenings, ...rest } = useQuery({
     queryKey: ["happening", ...happeningTypes],
     queryFn: async () => {
+      const lastWeek = new Date();
+      lastWeek.setDate(lastWeek.getDate() - 7);
+
       return await sanity.fetch<
         Array<{
           _id: string;
           title: string;
-          date: string | number | Date;
-          endDate: string | number | Date;
+          date: string ;
+          endDate: string | null;
           registrationStart: string | null;
           happeningType: HappeningType;
         }>
       >(
-        `*[_type == "happening" && date > now() && happeningType in $happeningTypes] | order(date asc){
+        `*[_type == "happening" && date > $lastWeek && happeningType in $happeningTypes] | order(date asc){
           _id,
           title,
           date,
@@ -27,7 +30,7 @@ export function useUpcomingHappenings(
           "registrationStart": registrationStart,
           happeningType
         }`,
-        { happeningTypes }
+        { happeningTypes, lastWeek }
       );
     },
   });
