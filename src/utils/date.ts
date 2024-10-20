@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, isAfter, isBefore } from "date-fns";
 import { nb } from "date-fns/locale/nb";
 
 export type Dateish = Date | string | number;
@@ -26,6 +26,17 @@ export const yearMonthDateNoDay = (date: Date | string) => {
     month: "short",
     year: "numeric",
   });
+};
+
+/**
+ * Checks if a given date is between two dates
+ * @param date the date to check
+ * @param startDate earliest date
+ * @param endDate endDate
+ * @returns if the date is between the two dates
+ */
+export const dateIsBetween = (date: Date, startDate: Date, endDate: Date): boolean => {
+  return isAfter(date, startDate) && isBefore(date, endDate);
 };
 
 export const onlyTimeHHMM = (date: Dateish) => {
