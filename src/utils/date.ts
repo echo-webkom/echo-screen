@@ -35,7 +35,11 @@ export const yearMonthDateNoDay = (date: Date | string) => {
  * @param endDate endDate
  * @returns if the date is between the two dates
  */
-export const dateIsBetween = (date: Date, startDate: Date, endDate: Date): boolean => {
+export const dateIsBetween = (
+  date: Date,
+  startDate: Date,
+  endDate: Date
+): boolean => {
   return isAfter(date, startDate) && isBefore(date, endDate);
 };
 
@@ -58,4 +62,8 @@ export const dateAndTime = (date: Dateish) => {
 
 export const capitalize = (string: string) => {
   return string.charAt(0).toLocaleUpperCase() + string.slice(1);
+};
+
+export const isFuture = (date: Dateish) => {
+  return isAfter(new Date(date), new Date());
 };
