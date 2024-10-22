@@ -67,3 +67,7 @@ export const capitalize = (string: string) => {
 export const isFuture = (date: Dateish) => {
   return isAfter(new Date(date), new Date());
 };
+
+export const hasBeen = (date: Dateish) => {
+  return isBefore(new Date(date), new Date());
+};
