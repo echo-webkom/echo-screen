@@ -7,7 +7,7 @@ export function MovieCard() {
   return (
     <>
       {nextMovie && (
-        <div className="h-full rounded-lg bg-background/70 border-2 shadow-lg">
+        <div className="h-full rounded-lg bg-background/70 border-2 shadow-lg flex-auto">
           {nextMovie && (
             <div className="flex h-full">
               <div className="overflow-hidden h-full">
