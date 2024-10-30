@@ -1,4 +1,5 @@
 import BedpressCountDown from "./bedpress-count-down";
+import BikeStation from "./bikes";
 import Calendar from "./calendar";
 import { MovieCard } from "./movie-card";
 
@@ -10,6 +11,7 @@ export default function BentoScreen() {
         <BedpressCountDown />
         <MovieCard />
       </div>
+      <BikeStation />
     </div>
   );
 }
