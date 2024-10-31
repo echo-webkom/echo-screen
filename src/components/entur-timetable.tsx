@@ -72,9 +72,11 @@ const EnTurTimetable = () => {
                   call.serviceJourney.journeyPattern.line.id
                 );
 
+                const uniqueKey = `${call.expectedArrivalTime}-${routeID}-${call.destinationDisplay.frontText}`;
+
                 return (
                   <tr
-                    key={index}
+                    key={uniqueKey}
                     className={index % 2 === 0 ? "bg-primary/5" : ""}
                   >
                     <td className="px-5">{displayTime}</td>
