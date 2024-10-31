@@ -1,7 +1,7 @@
 import BedpressCountDown from "./bedpress-count-down";
 import Calendar from "./calendar";
+import EnTurTimetable from "./entur-timetable";
 import { MovieCard } from "./movie-card";
-import SkyssTimeTable from "./skyss-time-table";
 
 export default function BentoScreen() {
   return (
@@ -10,7 +10,7 @@ export default function BentoScreen() {
       <div className="flex w-[100%] gap-10 h-56">
         <BedpressCountDown />
         <MovieCard />
-        <SkyssTimeTable />
+        <EnTurTimetable />
       </div>
     </div>
   );
