@@ -23,7 +23,7 @@ const EnTurTimetable = () => {
 
   return (
     <div className="flex-auto text-center rounded-lg bg-background/70 border-2 shadow-lg overflow-hidden">
-      <div className="bg-muted p-1 w-full font-semibold text-3xl">
+      <div className="p-1 w-full font-semibold text-3xl">
         <h1 className="flex justify-center">
           Avganger fra {data.stopPlace.name}
         </h1>
@@ -32,7 +32,7 @@ const EnTurTimetable = () => {
       {data && (
         <div className="min-w-full">
           <table className="text-left w-full">
-            <thead className="border-b bg-muted">
+            <thead className="border-b">
               <tr>
                 <th className="px-5">
                   <p className="font-semibold">Avgang</p>
@@ -75,7 +75,7 @@ const EnTurTimetable = () => {
                   return (
                     <tr
                       key={index}
-                      className={index % 2 === 1 ? "bg-muted" : ""}
+                      className={index % 2 === 0 ? "bg-muted/50" : ""}
                     >
                       <td className="px-5">{displayTime}</td>
                       <td className="px-5">{routeID}</td>
