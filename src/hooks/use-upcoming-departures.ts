@@ -1,7 +1,38 @@
 import { useEffect, useState } from "react";
 
+export type StopPlace = {
+  id: string;
+  name: string;
+  estimatedCalls: EstimatedCall[];
+};
+
+export type EstimatedCall = {
+  realtime: boolean;
+  aimedArrivalTime: string;
+  aimedDepartureTime: string;
+  expectedArrivalTime: string;
+  expectedDepartureTime: string;
+  destinationDisplay: {
+    frontText: string;
+  };
+  quay: {
+    id: string;
+  };
+  serviceJourney: {
+    journeyPattern: {
+      line: {
+        id: string;
+      };
+    };
+  };
+};
+
+type Data = {
+  stopPlace: StopPlace;
+};
+
 const useUpcomingDepartures = (interval: number = 5000) => {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<Data | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 

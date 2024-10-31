@@ -4,15 +4,21 @@ import {
   formatTime,
   getTimeDifferenceInMinutes,
 } from "../utils/timetableUtils";
+import { EstimatedCall } from "../hooks/use-upcoming-departures";
 
 const EnTurTimetable = () => {
   const { data, loading, error } = useUpcomingDepartures(5000);
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
     return <div>Error: {error}</div>;
+  }
+
+  if (!data) {
+    return <div>No data available</div>;
   }
 
   return (
@@ -45,13 +51,13 @@ const EnTurTimetable = () => {
 
             <tbody className="divide-y divide-border">
               {data.stopPlace.estimatedCalls
-                .filter((call: any) => {
+                .filter((call: EstimatedCall) => {
                   const timeDifference = getTimeDifferenceInMinutes(
                     call.expectedArrivalTime
                   );
                   return timeDifference >= 0;
                 })
-                .map((call: any, index: number) => {
+                .map((call: EstimatedCall, index: number) => {
                   const timeDifference = getTimeDifferenceInMinutes(
                     call.expectedArrivalTime
                   );
