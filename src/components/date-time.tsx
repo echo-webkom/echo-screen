@@ -29,7 +29,7 @@ export default function DateTime() {
     <div>
       <h1 className="text-4xl font-semibold flex justify-between items-center">
         <p className="text-left flex-1">{formattedDate}</p>
-        <p className="text-center flex-1">Uke: {weekNumber}</p>
+        <p className="text-center flex-1">Uke {weekNumber}</p>
         <p className="text-right flex-1">{formattedTime}</p>
       </h1>
     </div>
