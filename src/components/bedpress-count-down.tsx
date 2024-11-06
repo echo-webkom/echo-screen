@@ -29,11 +29,9 @@ export default function BedpressCountDown() {
 
   return (
     <>
-      {happenings ? (
-        <div className="text-center flex-auto rounded-lg px-10 bg-background/70 border-2 shadow-lg">
-          <h1 className="font-semibold text-4xl pt-6 pb-10">
-            {nextBedpres?.title}
-          </h1>
+      {nextBedpres && (
+        <div className="text-center flex-auto rounded-lg bg-background/70 px-10 py-4 border-2 shadow-lg">
+          <h1 className="font-semibold text-4xl  pb-5">{nextBedpres?.title}</h1>
           <p className="pb-2">Påmelding om:</p>
           <div className="flex justify-center space-x-10">
             <div className="flex flex-col justify-center w-8">
@@ -54,10 +52,6 @@ export default function BedpressCountDown() {
             </div>
           </div>
         </div>
-      ) : (
-        <h1 className="flex justify-center pt-20 font-semibold text-lg">
-          Ingen bedriftspresentasjoner {`:(`}
-        </h1>
       )}
     </>
   );
