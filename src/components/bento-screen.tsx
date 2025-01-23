@@ -2,6 +2,7 @@ import BedpressCountDown from "./bedpress-count-down";
 import Calendar from "./calendar";
 import EnTurTimetable from "./entur-timetable";
 import { MovieCard } from "./movie-card";
+import Subwaysurfers from "./subwaysurfer";
 
 export default function BentoScreen() {
   return (
@@ -11,6 +12,7 @@ export default function BentoScreen() {
         <BedpressCountDown />
         <MovieCard />
         <EnTurTimetable />
+        <Subwaysurfers toggleSubwaysurfers={true} />
       </div>
     </div>
   );
