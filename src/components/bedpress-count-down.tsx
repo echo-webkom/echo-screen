@@ -43,10 +43,8 @@ export default function BedpressCountDown() {
   }
 
   return (
-    <div className="text-center flex-auto rounded-lg px-10 bg-background/70 border-2 shadow-lg">
-      <h1 className="font-semibold text-4xl pt-6 pb-10">
-        {nextBedpres?.title}
-      </h1>
+    <div className="text-center flex-auto rounded-lg px-10 py-10 bg-background/70 border-2 shadow-lg">
+      <h1 className="font-semibold text-4xl  pb-10">{nextBedpres?.title}</h1>
       <p className="pb-2">Påmelding om:</p>
       <div className="flex justify-center space-x-10">
         <div className="flex flex-col justify-center w-8">

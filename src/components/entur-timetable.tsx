@@ -23,9 +23,9 @@ const EnTurTimetable = () => {
   }
 
   return (
-    <div className="flex-auto text-center rounded-lg bg-background/70 border-2 shadow-lg overflow-hidden">
+    <div className="flex-auto text-center rounded-lg bg-background/70 border-2 shadow-lg overflow-hidden text-xl">
       <div className="p-1 w-full font-semibold text-3xl">
-        <h1 className="flex justify-center">
+        <h1 className="flex justify-center p-6">
           Avganger fra {data.stopPlace.name}
         </h1>
       </div>
@@ -36,15 +36,15 @@ const EnTurTimetable = () => {
             <tr>
               <th className="px-5">
                 <p className="font-semibold">Avgang</p>
-                <p className="text-xs font-normal">Departure</p>
+                <p className=" font-normal">Departure</p>
               </th>
               <th className="px-5">
                 <p className="font-semibold">Linje</p>
-                <p className="text-xs font-normal">Route</p>
+                <p className=" font-normal">Route</p>
               </th>
               <th className="px-5">
                 <p className="font-semibold">Destinasjon</p>
-                <p className="text-xs font-normal">Destination</p>
+                <p className=" font-normal">Destination</p>
               </th>
             </tr>
           </thead>
