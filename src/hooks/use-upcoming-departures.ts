@@ -37,7 +37,7 @@ const fetchUpcomingDepartures = async (): Promise<Data> => {
     stopPlace(id: "NSR:StopPlace:58544") {
       id
       name
-      estimatedCalls(timeRange: 72100, numberOfDepartures: 10) {
+      estimatedCalls(timeRange: 72100, numberOfDepartures: 20) {
         realtime
         aimedArrivalTime
         aimedDepartureTime

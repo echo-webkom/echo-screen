@@ -23,48 +23,50 @@ const EnTurTimetable = () => {
   }
 
   return (
-    <div className="flex-auto text-center rounded-lg bg-background/70 border-2 shadow-lg overflow-hidden text-xl">
-      <div className="p-1 w-full font-semibold text-3xl">
-        <h1 className="flex justify-center p-6">
-          Avganger fra {data.stopPlace.name}
+    <div className="flex gap-10">
+      <div className="bg-white/25 rounded-md w-1/2">
+        <h1 className="text-xl px-4 py-8 font-medium">
+          Bybaneavganger fra {data.stopPlace.name}
         </h1>
-      </div>
 
-      <div className="min-w-full">
         <table className="text-left w-full">
-          <thead className="border-b">
+          <thead className="border-b ">
             <tr>
-              <th className="px-5">
-                <p className="font-semibold">Avgang</p>
-                <p className=" font-normal">Departure</p>
+              <th className="px-4 py-1 font-medium">
+                <p>Avgang</p>
               </th>
-              <th className="px-5">
-                <p className="font-semibold">Linje</p>
-                <p className=" font-normal">Route</p>
+              <th className="font-medium">
+                <p>Linje</p>
               </th>
-              <th className="px-5">
-                <p className="font-semibold">Destinasjon</p>
-                <p className=" font-normal">Destination</p>
+              <th className="font-medium">
+                <p>Destinasjon</p>
               </th>
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-border">
+          <tbody className="divide-y">
             {data.stopPlace.estimatedCalls
               .filter((call: EstimatedCall) => {
                 const timeDifference = getTimeDifferenceInMinutes(
                   call.expectedArrivalTime
                 );
-                return timeDifference >= 0;
+                return (
+                  timeDifference >= 0 &&
+                  extractRouteNumber(
+                    call.serviceJourney.journeyPattern.line.id
+                  ) === "1"
+                );
               })
+              .slice(0, 7)
               .map((call: EstimatedCall, index: number) => {
                 const timeDifference = getTimeDifferenceInMinutes(
                   call.expectedArrivalTime
                 );
 
                 const displayTime =
-                  timeDifference < 15 ||
-                  call.expectedArrivalTime !== call.aimedArrivalTime
+                  call.aimedArrivalTime !== call.expectedArrivalTime
+                    ? formatTime(call.aimedArrivalTime)
+                    : timeDifference < 15
                     ? `${timeDifference} min`
                     : formatTime(call.expectedArrivalTime);
 
@@ -79,11 +81,76 @@ const EnTurTimetable = () => {
                     key={uniqueKey}
                     className={index % 2 === 0 ? "bg-primary/5" : ""}
                   >
-                    <td className="px-5">{displayTime}</td>
-                    <td className="px-5">{routeID}</td>
-                    <td className="px-5">
-                      {call.destinationDisplay.frontText}
-                    </td>
+                    <td className="px-4 py-1">{displayTime}</td>
+                    <td>{routeID}</td>
+                    <td>{call.destinationDisplay.frontText}</td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="bg-white/25 rounded-md w-1/2">
+        <h1 className="text-xl px-4 py-8 font-medium">
+          Bussavganger fra {data.stopPlace.name}
+        </h1>
+
+        <table className="text-left w-full">
+          <thead className="border-b ">
+            <tr>
+              <th className="px-4 py-1 font-medium">
+                <p>Avgang</p>
+              </th>
+              <th className="font-medium">
+                <p>Linje</p>
+              </th>
+              <th className="font-medium">
+                <p>Destinasjon</p>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody className="divide-y">
+            {data.stopPlace.estimatedCalls
+              .filter((call: EstimatedCall) => {
+                const timeDifference = getTimeDifferenceInMinutes(
+                  call.expectedArrivalTime
+                );
+                return (
+                  timeDifference >= 0 &&
+                  extractRouteNumber(
+                    call.serviceJourney.journeyPattern.line.id
+                  ) !== "1"
+                );
+              })
+              .slice(0, 7)
+              .map((call: EstimatedCall, index: number) => {
+                const timeDifference = getTimeDifferenceInMinutes(
+                  call.expectedArrivalTime
+                );
+
+                const displayTime =
+                  call.aimedArrivalTime !== call.expectedArrivalTime
+                    ? formatTime(call.aimedArrivalTime)
+                    : timeDifference < 15
+                    ? `${timeDifference} min`
+                    : formatTime(call.expectedArrivalTime);
+
+                const routeID = extractRouteNumber(
+                  call.serviceJourney.journeyPattern.line.id
+                );
+
+                const uniqueKey = `${call.expectedArrivalTime}-${routeID}-${call.destinationDisplay.frontText}`;
+
+                return (
+                  <tr
+                    key={uniqueKey}
+                    className={index % 2 === 0 ? "bg-primary/5" : ""}
+                  >
+                    <td className="px-4 py-1">{displayTime}</td>
+                    <td>{routeID}</td>
+                    <td>{call.destinationDisplay.frontText}</td>
                   </tr>
                 );
               })}

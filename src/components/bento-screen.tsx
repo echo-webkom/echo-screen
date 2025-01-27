@@ -9,13 +9,13 @@ import Subwaysurfers from "./subwaysurfer";
 export default function BentoScreen() {
   const [showTimetable, setShowTimetable] = useState<boolean>(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowTimetable((prev) => !prev);
-    }, 30000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setShowTimetable((prev) => !prev);
+  //   }, 30000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
