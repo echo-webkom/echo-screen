@@ -1,3 +1,6 @@
+import { FaBus } from "react-icons/fa";
+import { BiSolidTrain } from "react-icons/bi";
+
 import useUpcomingDepartures, {
   EstimatedCall,
 } from "../hooks/use-upcoming-departures";
@@ -24,9 +27,10 @@ const EnTurTimetable = () => {
 
   return (
     <div className="flex gap-10 mt-6">
-      <div className="bg-white/25 rounded-md w-1/2">
-        <h1 className="text-xl px-4 py-8 font-medium">
-          Bybaneavganger fra {data.stopPlace.name}
+      <div className="bg-white/30 rounded-md w-1/2 border-2">
+        <h1 className="text-xl px-4 py-8 font-medium flex gap-2">
+          <>Bybaneavganger fra {data.stopPlace.name}</>
+          <BiSolidTrain className="my-auto size-6" />
         </h1>
 
         <table className="text-left w-full">
@@ -91,9 +95,10 @@ const EnTurTimetable = () => {
         </table>
       </div>
 
-      <div className="bg-white/25 rounded-md w-1/2">
-        <h1 className="text-xl px-4 py-8 font-medium">
-          Bussavganger fra {data.stopPlace.name}
+      <div className="bg-white/30 rounded-md w-1/2 border-2">
+        <h1 className="text-xl px-4 py-8 font-medium flex gap-2">
+          <>Bussavganger fra {data.stopPlace.name}</>
+          <FaBus className="my-auto" />
         </h1>
 
         <table className="text-left w-full">

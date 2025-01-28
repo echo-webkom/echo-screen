@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BiCycling } from "react-icons/bi";
+import { IoIosBicycle } from "react-icons/io";
 
 interface StationInfo {
   station_id: string;
@@ -66,14 +66,14 @@ export function Bysykkel() {
 
   return (
     <div className="flex gap-10 my-10">
-      <div className="bg-white/25 rounded-md w-1/2 px-4 py-3 space-y-2">
+      <div className="bg-white/30 rounded-md w-1/2 px-4 py-3 space-y-2 border-2">
         <h2 className="font-medium">Bysykler ved Florida:</h2>
         <>
           {floridaBikeCount !== null ? (
             floridaBikeCount > 0 ? (
               <div className="flex gap-2 flex-wrap">
                 {Array.from({ length: floridaBikeCount }, (_, index) => (
-                  <BiCycling key={index} />
+                  <IoIosBicycle key={index} />
                 ))}
               </div>
             ) : (
@@ -85,14 +85,14 @@ export function Bysykkel() {
         </>
       </div>
 
-      <div className="bg-white/25 rounded-md w-1/2 px-4 py-3 space-y-2">
+      <div className="bg-white/30 rounded-md w-1/2 px-4 py-3 space-y-2 border-2">
         <h2 className="font-medium">Bysykler ved Høyteknologisenteret:</h2>
         <>
           {hoytekBikeCount !== null ? (
             hoytekBikeCount > 0 ? (
               <div className="flex gap-2 flex-wrap">
                 {Array.from({ length: hoytekBikeCount }, (_, index) => (
-                  <BiCycling key={index} />
+                  <IoIosBicycle key={index} />
                 ))}
               </div>
             ) : (
@@ -106,5 +106,3 @@ export function Bysykkel() {
     </div>
   );
 }
-
-export default Bysykkel;
