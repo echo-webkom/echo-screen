@@ -23,7 +23,7 @@ const EnTurTimetable = () => {
   }
 
   return (
-    <div className="flex gap-10">
+    <div className="flex gap-10 mt-6">
       <div className="bg-white/25 rounded-md w-1/2">
         <h1 className="text-xl px-4 py-8 font-medium">
           Bybaneavganger fra {data.stopPlace.name}
