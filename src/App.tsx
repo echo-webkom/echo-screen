@@ -6,6 +6,7 @@ import { useReloadUpdate } from "./hooks/use-current-head";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
+
   return (
     <QueryClientProvider client={queryClient}>
       {import.meta.env.PROD && <Reload />}
