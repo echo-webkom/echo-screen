@@ -12,6 +12,7 @@
     "deploy": "pnpm run build && wrangler pages deploy"
   },
   "dependencies": {
+    "@octokit/rest": "^21.1.0",
     "@sanity/client": "6.22.0",
     "@sanity/image-url": "1.0.2",
     "@tanstack/react-query": "5.56.2",
