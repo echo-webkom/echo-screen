@@ -5,6 +5,7 @@ import Calendar from "./calendar";
 import EnTurTimetable from "./entur-timetable";
 import { MovieCard } from "./movie-card";
 import Subwaysurfers from "./subwaysurfer";
+import { Bysykkel } from "./bysykkel";
 
 export default function BentoScreen() {
   const [showTimetable, setShowTimetable] = useState<boolean>(false);
@@ -42,6 +43,7 @@ export default function BentoScreen() {
               className="w-[100%] h-[100%]"
             >
               <EnTurTimetable />
+              <Bysykkel />
             </motion.div>
           ) : (
             <motion.div
