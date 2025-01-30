@@ -1,107 +1,40 @@
-import { useEffect, useState } from "react";
 import { IoIosBicycle } from "react-icons/io";
-
-interface StationInfo {
-  station_id: string;
-  name: string;
-}
-
-interface StationStatus {
-  station_id: string;
-  num_bikes_available: number;
-}
+import { useBysykkel, BikeData } from "../hooks/use-bysykkel";
 
 export function Bysykkel() {
-  const [floridaBikeCount, setFloridaBikeCount] = useState<number | null>(null);
-  const [hoytekBikeCount, setHoytekBikeCount] = useState<number | null>(null);
+  const { data, isLoading, error } = useBysykkel();
 
-  const urlStatus =
-    "https://gbfs.urbansharing.com/bergenbysykkel.no/station_status.json";
-  const urlInfo =
-    "https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json";
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const infoResponse = await fetch(urlInfo);
-        const infoData = await infoResponse.json();
-
-        const statusResponse = await fetch(urlStatus);
-        const statusData = await statusResponse.json();
-
-        const stationsInfo: StationInfo[] = infoData.data.stations;
-        const floridaStation = stationsInfo.find(
-          (station) => station.name === "Florida Bybanestopp"
-        );
-        const hoytekStation = stationsInfo.find(
-          (station) => station.name === "Høyteknologisenteret"
-        );
-
-        if (floridaStation) {
-          const stationsStatus: StationStatus[] = statusData.data.stations;
-          const floridaStatus = stationsStatus.find(
-            (station) => station.station_id === floridaStation.station_id
-          );
-
-          setFloridaBikeCount(floridaStatus?.num_bikes_available || 0);
-          // setFloridaBikeCount(5);
-        }
-
-        if (hoytekStation) {
-          const stationsStatus: StationStatus[] = statusData.data.stations;
-          const hoytekStatus = stationsStatus.find(
-            (station) => station.station_id === hoytekStation.station_id
-          );
-
-          setHoytekBikeCount(hoytekStatus?.num_bikes_available || 0);
-          // setHoytekBikeCount(10);
-        }
-      } catch (e) {
-        console.error("Error fetching data: ", e);
-      }
-    };
-
-    fetchData();
-  }, []);
+  if (isLoading) return <p>Laster data...</p>;
+  if (error) return <p>Det oppsto en feil: {error.message}</p>;
+  if (!data) return <p>Ingen data tilgjengelig</p>;
 
   return (
     <div className="flex gap-10 my-10">
-      <div className="bg-white/30 rounded-md w-1/2 px-4 py-3 space-y-2 border-2">
-        <h2 className="font-medium">Bysykler ved Florida:</h2>
-        <>
-          {floridaBikeCount !== null ? (
-            floridaBikeCount > 0 ? (
-              <div className="flex gap-2 flex-wrap">
-                {Array.from({ length: floridaBikeCount }, (_, index) => (
-                  <IoIosBicycle key={index} />
-                ))}
-              </div>
-            ) : (
-              <p className="text-sm ">Ingen sykler tilgjengelig</p>
-            )
-          ) : (
-            <p>Laster ... </p>
-          )}
-        </>
-      </div>
+      {data?.map(({ station, bikeCount }) => (
+        <DisplayBysykkel
+          key={station}
+          station={station}
+          bikeCount={bikeCount}
+        />
+      ))}
+    </div>
+  );
+}
 
-      <div className="bg-white/30 rounded-md w-1/2 px-4 py-3 space-y-2 border-2">
-        <h2 className="font-medium">Bysykler ved Høyteknologisenteret:</h2>
-        <>
-          {hoytekBikeCount !== null ? (
-            hoytekBikeCount > 0 ? (
-              <div className="flex gap-2 flex-wrap">
-                {Array.from({ length: hoytekBikeCount }, (_, index) => (
-                  <IoIosBicycle key={index} />
-                ))}
-              </div>
-            ) : (
-              <p className="text-sm">Ingen sykler tilgjengelig</p>
-            )
-          ) : (
-            <p>Laster ... </p>
-          )}
-        </>
+function DisplayBysykkel(data: BikeData) {
+  return (
+    <div className="bg-white/30 rounded-md w-1/2 px-4 py-3 space-y-2 border-2">
+      <h2 className="font-medium">Bysykler ved {data.station}:</h2>
+      <div>
+        {data.bikeCount > 0 ? (
+          <div className="flex gap-2 flex-wrap">
+            {Array.from({ length: data.bikeCount }, (_, index) => (
+              <IoIosBicycle key={index} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm">Ingen sykler tilgjengelig</p>
+        )}
       </div>
     </div>
   );
