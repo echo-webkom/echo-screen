@@ -1,8 +1,8 @@
 import { IoIosBicycle } from "react-icons/io";
-import useBysykkel, { BikeData } from "../hooks/use-bysykkel";
+import { useBysykkel, BikeData } from "../hooks/use-bysykkel";
 
 export function Bysykkel() {
-  const { data, isLoading, error } = useBysykkel(10000);
+  const { data, isLoading, error } = useBysykkel();
 
   if (isLoading) return <p>Laster data...</p>;
   if (error) return <p>Det oppsto en feil: {error.message}</p>;
