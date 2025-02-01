@@ -18,23 +18,33 @@ const SCREENS = [
 
 export default function BentoScreen() {
   const [screenIndex, setScreenIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+
+  const upperProgressBound = 20 * 100;
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setScreenIndex((prevIndex) => (prevIndex + 1) % SCREENS.length);
-    }, 30000);
+    const progressBarCountDown = setInterval(() => {
+      setProgress((prev) => (prev < upperProgressBound ? prev + 1 : 0));
+      if (progress >= upperProgressBound) {
+        setScreenIndex((prevIndex) => (prevIndex + 1) % SCREENS.length);
+      }
+    }, 10);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      clearInterval(progressBarCountDown);
+    };
+  }, [progress, upperProgressBound]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
         setScreenIndex((prevIndex) => (prevIndex + 1) % SCREENS.length);
+        setProgress(0);
       } else if (event.key === "ArrowLeft") {
         setScreenIndex(
           (prevIndex) => (prevIndex - 1 + SCREENS.length) % SCREENS.length
         );
+        setProgress(0);
       }
     };
 
@@ -44,6 +54,11 @@ export default function BentoScreen() {
 
   return (
     <div className="h-[calc(100vh-12rem)] w-[100%] space-y-7">
+      <progress
+        className="absolute top-0 left-0 w-full [&::-webkit-progress-bar]:h-1.5 [&::-webkit-progress-bar]:bg-transparent [&::-webkit-progress-value]:bg-primary"
+        value={progress}
+        max={upperProgressBound}
+      ></progress>
       <div className="flex w-[100%] gap-10">
         <AnimatePresence mode="wait">
           <motion.div
