@@ -77,3 +77,19 @@ export const getDate = (date: Date | string | number) => {
 
   return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 };
+
+export function getCurrentWeekDates(): Date[] {
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const diffToMonday = (dayOfWeek === 0 ? -6 : 1) - dayOfWeek;
+
+  const startOfWeek = new Date(today);
+  startOfWeek.setDate(today.getDate() + diffToMonday);
+
+  return Array.from({ length: 7 }, (_, i) => {
+    const date = new Date(startOfWeek);
+    date.setDate(startOfWeek.getDate() + i);
+    date.setHours(0, 0, 0, 0);
+    return date;
+  });
+}
