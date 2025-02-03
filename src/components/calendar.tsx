@@ -1,40 +1,29 @@
-import { useState } from "react";
-import {
-  HappeningType,
-  useUpcomingHappenings,
-} from "../hooks/use-upcoming-happenings";
-import {
-  dateIsBetween,
-  onlyDayName,
-  onlyTimeHHMM,
-} from "../utils/date";
+import { dateIsBetween, onlyDayName, onlyTimeHHMM } from "../utils/date";
 import { isSameDay } from "date-fns";
-import { useNextMovie } from "../hooks/use-upcoming-movies";
 import { cn } from "../lib/cn";
+import { useHappenings } from "../hooks/use-happenings";
 
 export default function Calendar() {
-  const [happeningTypes] = useState<Array<HappeningType>>([
-    "bedpres",
-    "event",
-    "external",
-  ]);
-
-  const { happenings = [] } = useUpcomingHappenings(happeningTypes);
-  const { data: nextMovie } = useNextMovie();
   const today = new Date();
+  const dayOfWeek = today.getDay();
 
-  const weekdays = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date();
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setDate(today.getDate() + i);
+  const startOfWeek = new Date(today);
+  const diffToMonday = (dayOfWeek === 0 ? -6 : 1) - dayOfWeek;
+  startOfWeek.setDate(today.getDate() + diffToMonday);
+
+  const days = Array.from({ length: 7 }, (_, i) => {
+    const date = new Date(startOfWeek);
+    date.setDate(startOfWeek.getDate() + i);
+    date.setHours(0, 0, 0, 0);
     return date;
   });
+
+  const { happenings = [] } = useHappenings(days);
 
   return (
     <div className="text-center rounded-lg bg-background/70 border-2 overflow-hidden shadow-lg h-60">
       <div className="grid grid-cols-7 h-full divide-x">
-        {weekdays.map((day) => {
+        {days.map((day) => {
           const isToday = isSameDay(day, new Date());
           const happeningsThisDay = happenings
             .filter((happening) => {
@@ -72,11 +61,11 @@ export default function Calendar() {
                     : true;
                   return (
                     <div
-                      key={happening._id}
+                      key={happening.id}
                       className={cn("border-l-4 pl-1 text-left py-1", {
-                        "border-primary": happening.happeningType == "bedpres",
-                        "border-secondary": happening.happeningType == "event",
-                        "border-slate-400": happening.happeningType == "external",
+                        "border-primary": happening.type == "bedpres",
+                        "border-secondary": happening.type == "event",
+                        "border-slate-400": happening.type == "other",
                       })}
                     >
                       <p className="text-sm line-clamp-1">{happening.title}</p>
@@ -89,16 +78,6 @@ export default function Calendar() {
                     </div>
                   );
                 })}
-                {nextMovie && isSameDay(nextMovie.date, day) && (
-                  <div className="border-l-4 pl-1 text-left space-y-1 border-pink-400">
-                    <p className="text-sm line-clamp-1">
-                      {"Film: " + nextMovie.title}
-                    </p>
-                    <p className="text-gray-400 text-xs">
-                      {onlyTimeHHMM(nextMovie.date)}
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
           );

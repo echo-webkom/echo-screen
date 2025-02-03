@@ -71,3 +71,9 @@ export const isFuture = (date: Dateish) => {
 export const hasBeen = (date: Dateish) => {
   return isBefore(new Date(date), new Date());
 };
+
+export const getDate = (date: Date | string | number) => {
+  const d = new Date(date);
+
+  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+};
