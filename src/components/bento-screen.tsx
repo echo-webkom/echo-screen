@@ -16,35 +16,26 @@ const SCREENS = [
   </div>,
 ];
 
+const transitionTime = 30000;
+
 export default function BentoScreen() {
   const [screenIndex, setScreenIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
-
-  const upperProgressBound = 20 * 100;
 
   useEffect(() => {
-    const progressBarCountDown = setInterval(() => {
-      setProgress((prev) => (prev < upperProgressBound ? prev + 1 : 0));
-      if (progress >= upperProgressBound) {
-        setScreenIndex((prevIndex) => (prevIndex + 1) % SCREENS.length);
-      }
-    }, 10);
-
-    return () => {
-      clearInterval(progressBarCountDown);
-    };
-  }, [progress, upperProgressBound]);
+    const interval = setInterval(() => {
+      setScreenIndex((prevIndex) => (prevIndex + 1) % SCREENS.length);
+    }, transitionTime);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
         setScreenIndex((prevIndex) => (prevIndex + 1) % SCREENS.length);
-        setProgress(0);
       } else if (event.key === "ArrowLeft") {
         setScreenIndex(
           (prevIndex) => (prevIndex - 1 + SCREENS.length) % SCREENS.length
         );
-        setProgress(0);
       }
     };
 
@@ -54,11 +45,22 @@ export default function BentoScreen() {
 
   return (
     <div className="h-[calc(100vh-12rem)] w-[100%] space-y-7">
-      <progress
-        className="absolute top-0 left-0 w-full [&::-webkit-progress-bar]:h-1.5 [&::-webkit-progress-bar]:bg-transparent [&::-webkit-progress-value]:bg-primary"
-        value={progress}
-        max={upperProgressBound}
-      ></progress>
+      <div className="absolute w-full top-0 h-2 left-0">
+        <motion.div
+          animate={{
+            width: window.screen.width,
+          }}
+          transition={{
+            duration: transitionTime / 1000,
+            ease: "linear",
+            repeat: Infinity,
+          }}
+          initial={{
+            width: 0,
+          }}
+          className="h-2 w-6 bg-primary"
+        ></motion.div>
+      </div>
       <div className="flex w-[100%] gap-10">
         <AnimatePresence mode="wait">
           <motion.div
