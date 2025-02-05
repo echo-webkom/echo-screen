@@ -30,10 +30,16 @@ export default function Calendar() {
     <div className="text-center rounded-lg bg-background/70 border-2 overflow-hidden shadow-lg h-60">
       <div className="grid grid-cols-7 h-full divide-x">
         {days.map((day) => {
+          const isToday = isSameDay(day, new Date());
           const dayHappenings = getDayHappenings(day);
           return (
             <div key={day.toISOString()}>
-              <p className="border-b bg-muted p-1 font-semibold">
+              <p
+                className={cn("border-b p-1 font-semibold", {
+                  "bg-primary/30": isToday,
+                  "bg-primary/10": !isToday,
+                })}
+              >
                 {onlyDayName(day)}
               </p>
               <div className="p-1">
