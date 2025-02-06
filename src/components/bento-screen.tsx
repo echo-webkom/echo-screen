@@ -20,14 +20,15 @@ const SCREENS = [
   </div>,
 ];
 
+const transitionTime = 30000;
+
 export default function BentoScreen() {
   const [screenIndex, setScreenIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setScreenIndex((prevIndex) => (prevIndex + 1) % SCREENS.length);
-    }, 30000);
-
+    }, transitionTime);
     return () => clearInterval(interval);
   }, []);
 
@@ -48,6 +49,22 @@ export default function BentoScreen() {
 
   return (
     <div className="h-[calc(100vh-12rem)] w-[100%] space-y-7">
+      <div className="absolute w-full top-0 h-2 left-0">
+        <motion.div
+          animate={{
+            width: window.screen.width,
+          }}
+          transition={{
+            duration: transitionTime / 1000,
+            ease: "linear",
+            repeat: Infinity,
+          }}
+          initial={{
+            width: 0,
+          }}
+          className="h-2 w-6 bg-primary"
+        ></motion.div>
+      </div>
       <div className="flex w-[100%] gap-10">
         <AnimatePresence mode="wait">
           <motion.div
