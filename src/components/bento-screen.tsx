@@ -54,6 +54,7 @@ export default function BentoScreen() {
           animate={{
             width: window.screen.width,
           }}
+          key={screenIndex}
           transition={{
             duration: transitionTime / 1000,
             ease: "linear",
