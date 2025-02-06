@@ -1,31 +1,21 @@
-import { useEffect, useMemo, useState } from "react";
-import { useUpcomingHappenings } from "../hooks/use-upcoming-happenings";
-import { hasBeen } from "../utils/date";
+import { useEffect, useState } from "react";
+import { useNextBedpres } from "../hooks/use-happenings";
 
 export default function BedpressCountDown() {
-  const { happenings } = useUpcomingHappenings(["bedpres"]);
+  const { nextBedpres } = useNextBedpres();
 
-  const nextBedpres = useMemo(
-    () =>
-      happenings?.find(
-        (happening) => !hasBeen(new Date(happening.registrationStart ?? NaN))
-      ),
-    [happenings]
-  );
-
-  const nextBedpresDate = useMemo(
-    () => new Date(nextBedpres?.registrationStart ?? NaN),
-    [nextBedpres?.registrationStart]
-  );
   const [timeDifference, setTimeDifference] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTimeDifference(nextBedpresDate.getTime() - new Date().getTime());
+      setTimeDifference(
+        new Date(nextBedpres?.registrationStart || 0).getTime() -
+          new Date().getTime()
+      );
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [nextBedpresDate]);
+  }, [nextBedpres?.registrationStart]);
 
   const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   const hours = Math.floor(
@@ -34,7 +24,7 @@ export default function BedpressCountDown() {
   const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-  if (!happenings) {
+  if (!nextBedpres) {
     return (
       <h1 className="flex justify-center pt-20 font-semibold text-lg">
         Ingen bedriftspresentasjoner {`:(`}

@@ -1,8 +1,8 @@
-import { useNextMovie } from "../hooks/use-upcoming-movies";
+import { useNextMovie } from "../hooks/use-happenings";
 import { dateAndTime } from "../utils/date";
 
 export function MovieCard() {
-  const { data: nextMovie } = useNextMovie();
+  const { nextMovie } = useNextMovie();
 
   return (
     <>
