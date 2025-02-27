@@ -7,14 +7,14 @@ import { Bysykkel } from "./bysykkel";
 import TodaysBirthdays from "./todays-birthdays";
 
 const SCREENS = [
-  <div key="screen1" className="w-[100%] h-[100%] flex flex-col gap-7">
+  <div key="screen1" className="w-fulll h-full flex flex-col gap-7">
     <Calendar />
     <div className="flex gap-7">
       <BedpressCountDown />
       <TodaysBirthdays />
     </div>
   </div>,
-  <div key="screen2" className="w-[100%] h-[100%]">
+  <div key="screen2" className="w-full h-full">
     <EnTurTimetable />
     <Bysykkel />
   </div>,
@@ -24,6 +24,7 @@ const transitionTime = 30000;
 
 export default function BentoScreen() {
   const [screenIndex, setScreenIndex] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,6 +32,18 @@ export default function BentoScreen() {
     }, transitionTime);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const handleWidthChange = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    handleWidthChange();
+
+    window.addEventListener("resize", handleWidthChange);
+
+    return () => window.removeEventListener("resize", handleWidthChange);
+  });
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -48,11 +61,11 @@ export default function BentoScreen() {
   }, []);
 
   return (
-    <div className="h-[calc(100vh-12rem)] w-[100%] space-y-7">
+    <div className="h-[calc(100vh-12rem)] w-full space-y-7">
       <div className="absolute w-full top-0 h-2 left-0">
         <motion.div
           animate={{
-            width: window.screen.width,
+            width: screenWidth,
           }}
           key={screenIndex}
           transition={{
@@ -66,7 +79,7 @@ export default function BentoScreen() {
           className="h-2 w-6 bg-primary"
         ></motion.div>
       </div>
-      <div className="flex w-[100%] gap-10">
+      <div className="flex w-full gap-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={screenIndex}
@@ -74,7 +87,7 @@ export default function BentoScreen() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
-            className="w-[100%] h-[100%]"
+            className="w-full h-full"
           >
             {SCREENS[screenIndex]}
           </motion.div>
