@@ -5,6 +5,7 @@ import Calendar from "./calendar";
 import EnTurTimetable from "./entur-timetable";
 import { Bysykkel } from "./bysykkel";
 import TodaysBirthdays from "./todays-birthdays";
+import OrakelTorsdag from "../assets/orakel-torsdag.png";
 
 const SCREENS = [
   <div key="screen1" className="w-fulll h-full flex flex-col gap-7">
@@ -17,6 +18,9 @@ const SCREENS = [
   <div key="screen2" className="w-full h-full">
     <EnTurTimetable />
     <Bysykkel />
+  </div>,
+  <div key="screen3" className="w-full h-full flex items-center justify-center">
+    <img src={OrakelTorsdag} className="h-[80vh]" />
   </div>,
 ];
 
