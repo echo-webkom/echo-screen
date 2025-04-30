@@ -4,14 +4,15 @@ import { Orakel } from "./orakel";
 import Calendar from "./calendar";
 import EnTurTimetable from "./entur-timetable";
 import { Bysykkel } from "./bysykkel";
+import TodaysBirthdays from "./todays-birthdays";
 
 const SCREENS = [
   <div key="screen1" className="w-full h-full flex flex-col gap-7">
     <Calendar />
     <div className="flex gap-7">
-      {/* <BedpressCountDown />
-      <TodaysBirthdays /> */}
+      {/* <BedpressCountDown /> */}
       <Orakel />
+      <TodaysBirthdays />
     </div>
   </div>,
   <div key="screen2" className="w-full h-full">
