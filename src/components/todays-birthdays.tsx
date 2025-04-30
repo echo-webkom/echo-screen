@@ -7,7 +7,7 @@ export default function TodaysBirthdays() {
   }
   return (
     data.length > 0 && (
-      <div className="text-center flex-auto rounded-lg px-10 py-10 bg-background/70 border-2 shadow-lg w-10">
+      <div className="text-center flex-auto rounded-lg w-fit px-10 py-10 bg-background/70 border-2 shadow-lg">
         <h1 className="text-xl mb-4 font-extrabold text-primary">
           🎉
           {data.length === 1

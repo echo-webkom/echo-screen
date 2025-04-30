@@ -58,7 +58,7 @@ export default function Calendar() {
                         "border-slate-500": type === "other",
                       })}
                     >
-                      <p className="text-xs line-clamp-1">
+                      <p className="text-sm line-clamp-1">
                         {type === "bedpres"
                           ? "Bedpres: "
                           : type === "movie"

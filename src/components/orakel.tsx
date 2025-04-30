@@ -1,6 +1,6 @@
 export function Orakel() {
   return (
-    <div className="flex flex-col items-center justify-center bg-background/70 border-2 shadow-lg rounded-lg p-10">
+    <div className="flex flex-col items-center w-full justify-center bg-background/70 border-2 shadow-lg rounded-lg p-10">
       <h1 className="text-5xl font-bold drop-shadow-lg">
         informatikk - Orakel
       </h1>
@@ -19,8 +19,8 @@ export function Orakel() {
         </div>
         <div className="bg-white/20 p-6 rounded-lg border-2">
           <h2 className="text-2xl font-semibold">🧇 Vaffel</h2>
-          <p className="mt-2 text-lg">Gratis vafler på torsdagene!</p>
-          <p className="mt-2 text-lg italic">Bestilles gjennom discord</p>
+          <p className="mt-2 text-md">Gratis vafler på torsdagene!</p>
+          <p className="mt-2 text-md italic">Bestilles gjennom discord</p>
         </div>
       </div>
     </div>
