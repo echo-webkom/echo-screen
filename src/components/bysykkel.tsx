@@ -24,7 +24,7 @@ export function Bysykkel() {
 function DisplayBysykkel(data: BikeData) {
   return (
     <div className="bg-white/30 rounded-md w-1/2 px-4 py-3 space-y-2 border-2">
-      <h1 className="font-medium text-lg py-4">Bysykler ved {data.station}:</h1>
+      <h1 className="font-medium text-lg py-2">Bysykler ved {data.station}:</h1>
       <div>
         {data.bikeCount > 0 ? (
           <div className="flex gap-2 flex-wrap">
@@ -33,7 +33,7 @@ function DisplayBysykkel(data: BikeData) {
             ))}
           </div>
         ) : (
-          <p className="text-md pb-4">Ingen sykler tilgjengelig</p>
+          <p className="text-md pb-2">Ingen sykler tilgjengelig</p>
         )}
       </div>
     </div>
