@@ -2,7 +2,7 @@ export function Orakel() {
   return (
     <div className="flex flex-col items-center w-full justify-center bg-background/70 border-2 shadow-lg rounded-lg p-10">
       <h1 className="text-5xl font-bold drop-shadow-lg">
-        informatikk - Orakel
+        Informatikk-orakel
       </h1>
       <p className="mt-4 text-lg max-w-2xl">
         Få hjelp med informatikkoppgaver 💻
