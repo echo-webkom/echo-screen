@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DateTime from "./components/date-time";
 import { ScreenCycle } from "./components/screen-cycle";
@@ -7,6 +7,14 @@ import { TransportScreen } from "./pages/transport-screen";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      window.location.reload();
+    }, 4 * 60 * 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
