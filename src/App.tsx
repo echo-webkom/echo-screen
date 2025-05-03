@@ -1,25 +1,19 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DateTime from "./components/date-time";
-import BentoScreen from "./components/bento-screen";
-import { useReloadUpdate } from "./hooks/use-current-head";
+import { ScreenCycle } from "./components/screen-cycle";
+import { CalendarScreen } from "./pages/calendar-screen";
+import { TransportScreen } from "./pages/transport-screen";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
+
   return (
     <QueryClientProvider client={queryClient}>
-      {import.meta.env.PROD && <Reload />}
-      <div className="p-8 pb-0 space-y-5">
-        <div>
-          <DateTime />
-        </div>
-        <BentoScreen />
-      </div>
+      <main className="p-8 pb-0 space-y-5 h-screen flex flex-col">
+        <DateTime />
+        <ScreenCycle screens={[CalendarScreen, TransportScreen]} />
+      </main>
     </QueryClientProvider>
   );
 }
-
-const Reload = () => {
-  useReloadUpdate();
-  return null;
-};
