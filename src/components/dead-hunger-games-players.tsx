@@ -10,7 +10,6 @@ export default function DeadHungerGamesPlayers(){
         return <h1 className="text-6xl top-1/3 absolute text-center text-red-600 font-semibold ">
                     Ingen spillere i Nerd Assassins har dødd enda!
                 </h1>
-        
     }
 
     return(

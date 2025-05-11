@@ -2,7 +2,7 @@ import { useHungerGames } from "../hooks/use-hunger-games";
 import { useEffect, useState } from "react";
 import { urlFor } from "../lib/sanity";
 import { AnimatePresence, motion } from "framer-motion";
-
+import noPhoto from "../assets/noPhoto.png"
 
 export default function ShowRecentlyKilledPeople(){
     const { data } = useHungerGames();
@@ -24,7 +24,7 @@ export default function ShowRecentlyKilledPeople(){
         <div className="flex justify-center items-center h-[90%]">
             {currenPlayer ? (
                 <div>
-                    <h1 className="text-6xl font-semibold text-red-600 text-center pb-8">Eliminert:</h1>
+                    <h1 className="text-6xl font-semibold text-red-600 text-center pb-8">{onlyOneDead ? "Denne spilleren eliminert igår:" : "Disse ble eleminert igår:"}</h1>
                     <AnimatePresence mode="wait"> 
                         <motion.div
                         key={playerIndex}
@@ -34,7 +34,16 @@ export default function ShowRecentlyKilledPeople(){
                         transition={{duration:2}}
                         className="w-full h-full"
                         >
-                        <img className="border-4 border-red-600 rounded-full " src={urlFor(currenPlayer.profile.picture!).width(400).height(400).url()} alt={currenPlayer.profile.name} />
+                        <div className="flex justify-center">
+                            
+                        {currenPlayer.profile.picture ? (
+                            
+                            <img className="border-4 border-red-600 rounded-full h-96 w-96" src={urlFor(currenPlayer.profile.picture!).width(400).height(400).url()} alt={currenPlayer.profile.name} />
+                        ): (
+                            <img className="border-4 border-red-600 rounded-full h-96 w-96" src={noPhoto} alt={currenPlayer.profile.name} />
+                        )}
+                        </div>
+
                         <h1 className="text-center text-4xl font-semibold text-red-600">{currenPlayer?.profile.name}</h1>
                         </motion.div>
                     </AnimatePresence>
