@@ -1,13 +1,12 @@
-import { sanity } from "../sanity"
+import { sanity } from "../sanity";
 import { HungerGamesQueryResult } from "../sanity.types";
 
 export const fetchAllHungerGames = async () => {
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
 
-  return await sanity
-  .fetch<HungerGamesQueryResult>(hungerGames, {yesterday})
-}
+  return await sanity.fetch<HungerGamesQueryResult>(hungerGames, { yesterday });
+};
 
 const hungerGames = `{
   "all": *[_type == "hungerGames" && isDead == true && _updatedAt <= $yesterday]{
@@ -29,4 +28,4 @@ const hungerGames = `{
     isDead,
   }
 }
-`
+`;

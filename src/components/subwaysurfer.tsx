@@ -2,9 +2,7 @@ interface SubwaysurfersProps {
   toggleSubwaysurfers: boolean;
 }
 
-export default function Subwaysurfers({
-  toggleSubwaysurfers,
-}: SubwaysurfersProps) {
+export default function Subwaysurfers({ toggleSubwaysurfers }: SubwaysurfersProps) {
   if (!toggleSubwaysurfers) {
     return null;
   }

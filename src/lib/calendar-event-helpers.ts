@@ -6,15 +6,11 @@ import { getDate } from "../utils/date";
 
 type CalendarEventType = "event" | "bedpres" | "movie" | "boardgame" | "other";
 
-type FetchAllRepeatingHappeningsResult = Awaited<
-  ReturnType<typeof fetchAllRepeatingHappenings>
->;
+type FetchAllRepeatingHappeningsResult = Awaited<ReturnType<typeof fetchAllRepeatingHappenings>>;
 type FetchAllHappeningsResult = Awaited<ReturnType<typeof fetchAllHappenings>>;
 type FetchMoviesResult = Awaited<ReturnType<typeof fetchMovies>>;
 
-type Happening =
-  | FetchAllHappeningsResult[number]
-  | FetchAllRepeatingHappeningsResult[number];
+type Happening = FetchAllHappeningsResult[number] | FetchAllRepeatingHappeningsResult[number];
 
 export type CalendarEvent = {
   id: string;
@@ -52,20 +48,18 @@ export const happeningsToCalendarEvent = (
       title: happening.title,
       date: new Date(happening.date),
       endDate: happening.endDate ? new Date(happening.endDate) : undefined,
-      type: getCalendarEventType(happening),
+      type: getCalendarEventType(happening)
     }));
 };
 
-export const moviesToCalendarEvent = (
-  movies: FetchMoviesResult
-): Array<CalendarEvent> => {
+export const moviesToCalendarEvent = (movies: FetchMoviesResult): Array<CalendarEvent> => {
   return movies.map((movie) => ({
     id: movie._id,
     title: `Film: ${movie.title}`,
     date: new Date(movie.date),
     body: `Se ${movie.title} med filmklubben!`,
     link: movie.link ?? "#",
-    type: "movie",
+    type: "movie"
   }));
 };
 
@@ -75,11 +69,9 @@ export const repeatingEventsToCalendarEvent = (
   return repeatingHappenings.flatMap((happening) => {
     return eachDayOfInterval({
       start: new Date(happening.startDate),
-      end: new Date(happening.endDate),
+      end: new Date(happening.endDate)
     })
-      .filter(
-        (date) => !happening.ignoredDates?.map(getDate).includes(getDate(date))
-      )
+      .filter((date) => !happening.ignoredDates?.map(getDate).includes(getDate(date)))
       .filter((date) => date.getDay() === happening.dayOfWeek)
       .filter((_, i) => {
         switch (happening.interval) {
@@ -107,7 +99,7 @@ export const repeatingEventsToCalendarEvent = (
           title: happening.title,
           date: startDate,
           endDate: endDate,
-          type: getCalendarEventType(happening),
+          type: getCalendarEventType(happening)
         };
       });
   });

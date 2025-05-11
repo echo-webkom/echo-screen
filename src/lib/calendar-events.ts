@@ -1,7 +1,7 @@
 import {
   happeningsToCalendarEvent,
   moviesToCalendarEvent,
-  repeatingEventsToCalendarEvent,
+  repeatingEventsToCalendarEvent
 } from "./calendar-event-helpers";
 import { fetchAllHappenings } from "./sanity/happenings";
 import { fetchAllRepeatingHappenings } from "./sanity/repeating-happening";
@@ -11,7 +11,7 @@ export const getCalendarEvents = async () => {
   const [happenings, repeatingHappenings, movies] = await Promise.all([
     fetchAllHappenings(),
     fetchAllRepeatingHappenings(),
-    fetchMovies(),
+    fetchMovies()
   ]);
 
   return happeningsToCalendarEvent(happenings)
