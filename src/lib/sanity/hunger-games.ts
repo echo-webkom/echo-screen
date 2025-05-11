@@ -2,8 +2,11 @@ import { sanity } from "../sanity"
 import { HungerGamesQueryResult } from "../sanity.types";
 
 export const fetchAllHungerGames = async () => {
-    return await sanity
-    .fetch<HungerGamesQueryResult>(hungerGames, {yesterday})
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  return await sanity
+  .fetch<HungerGamesQueryResult>(hungerGames, {yesterday})
 }
 
 const hungerGames = `{
@@ -27,5 +30,3 @@ const hungerGames = `{
   }
 }
 `
-const yesterday = new Date();
-yesterday.setDate(yesterday.getDate() - 1);
