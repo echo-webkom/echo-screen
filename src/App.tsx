@@ -1,18 +1,34 @@
 import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import DateTime from "./components/date-time";
 import { ScreenCycle } from "./components/screen-cycle";
 import { CalendarScreen } from "./pages/calendar-screen";
 import { TransportScreen } from "./pages/transport-screen";
+import { HungerGamesScreen } from "./pages/hunger-games-screen";
+import DateTime from "./components/date-time";
+import ShowRecentlyKilledPeople from "./pages/recently-killed-people";
+
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
+  const [showRecentlyKilledPeople, setShowRecentlyKilledPeople] = useState(false);
+
+  useEffect(() => {
+    const checkNoon = () => {
+      const now = new Date();
+      if (now.getHours() === 12 &&
+          now.getMinutes() >= 0 && 
+          now.getMinutes() <= 6){
+        setShowRecentlyKilledPeople((prev) => !prev);
+      }
+    }
+    const interval = setInterval(checkNoon, 59000);
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
       window.location.reload();
     }, 4 * 60 * 60 * 1000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -20,8 +36,15 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <main className="p-8 pb-0 space-y-5 h-screen flex flex-col">
         <DateTime />
-        <ScreenCycle screens={[CalendarScreen, TransportScreen]} />
+        {showRecentlyKilledPeople ? (
+           <ShowRecentlyKilledPeople/> 
+        ): (
+          <ScreenCycle screens={[CalendarScreen, HungerGamesScreen, TransportScreen]} />
+        )}
       </main>
     </QueryClientProvider>
   );
 }
+
+
+
