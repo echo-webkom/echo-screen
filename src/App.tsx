@@ -16,12 +16,14 @@ export default function App() {
     const checkNoon = () => {
       const now = new Date();
       if (now.getHours() === 12 &&
-          now.getMinutes() >= 0 && 
-          now.getMinutes() <= 6){
-        setShowRecentlyKilledPeople((prev) => !prev);
+          now.getMinutes() > 0 && 
+          now.getMinutes() < 5){
+        setShowRecentlyKilledPeople(() => true);
+      } else {
+        setShowRecentlyKilledPeople(() => false)
       }
     }
-    const interval = setInterval(checkNoon, 59000);
+    const interval = setInterval(checkNoon, 60000);
     return () => clearInterval(interval)
   }, [])
 
