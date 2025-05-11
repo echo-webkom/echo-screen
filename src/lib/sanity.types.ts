@@ -127,6 +127,28 @@ export type MoviesQueryResult = Array<{
   };
 }>;
 
+export type HungerGamesPerson = {
+  _id: string;
+  profile: {
+    _id: string,
+    name: string;
+    picture?: {
+      asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+    }
+  }
+  isDead: boolean;
+};
+
+export type HungerGamesQueryResult = {
+  all: Array<HungerGamesPerson>,
+  recent: Array<HungerGamesPerson>
+}
+
 declare const internalGroqTypeReferenceTo: unique symbol;
 
 type Ttime = {
