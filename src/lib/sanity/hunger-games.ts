@@ -4,6 +4,7 @@ import { HungerGamesQueryResult } from "../sanity.types";
 export const fetchAllHungerGames = async () => {
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setHours(yesterday.getHours() + 2)
 
   return await sanity
   .fetch<HungerGamesQueryResult>(hungerGames, {yesterday})
