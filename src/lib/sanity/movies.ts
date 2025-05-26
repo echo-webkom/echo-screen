@@ -5,7 +5,7 @@ export const fetchMovies = async () => {
   const movies = await sanity.fetch<MoviesQueryResult>(moviesQuery);
   return movies.map((movie) => ({
     ...movie,
-    image: urlFor(movie.image).url(),
+    image: urlFor(movie.image).url()
   }));
 };
 

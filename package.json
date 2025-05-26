@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "tsc --noEmit && eslint .",
     "preview": "pnpm run build && wrangler pages dev ./dist",
-    "deploy": "pnpm run build && wrangler pages deploy"
+    "deploy": "pnpm run build && wrangler pages deploy",
+    "format": "pnpm exec prettier . --write"
   },
   "dependencies": {
     "@octokit/rest": "^21.1.0",

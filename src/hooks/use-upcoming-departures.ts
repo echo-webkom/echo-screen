@@ -60,17 +60,14 @@ const fetchUpcomingDepartures = async (): Promise<Data> => {
     }
   }`;
 
-  const response = await fetch(
-    "https://api.entur.io/journey-planner/v3/graphql",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "ET-Client-Name": "echo-echoScreen",
-      },
-      body: JSON.stringify({ query }),
-    }
-  );
+  const response = await fetch("https://api.entur.io/journey-planner/v3/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "ET-Client-Name": "echo-echoScreen"
+    },
+    body: JSON.stringify({ query })
+  });
 
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -84,7 +81,7 @@ const useUpcomingDepartures = (interval: number = 5000) => {
   return useQuery<Data, Error>({
     queryKey: ["upcomingDepartures"],
     queryFn: fetchUpcomingDepartures,
-    refetchInterval: interval,
+    refetchInterval: interval
   });
 };
 

@@ -20,12 +20,8 @@ const stationList = ["Florida Bybanestopp", "Høyteknologisenteret"];
 const fetchBysykkelData = async (): Promise<Array<BikeData>> => {
   try {
     const [infoResponse, statusResponse] = await Promise.all([
-      fetch(
-        "https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json"
-      ),
-      fetch(
-        "https://gbfs.urbansharing.com/bergenbysykkel.no/station_status.json"
-      ),
+      fetch("https://gbfs.urbansharing.com/bergenbysykkel.no/station_information.json"),
+      fetch("https://gbfs.urbansharing.com/bergenbysykkel.no/station_status.json")
     ]);
 
     if (!infoResponse.ok || !statusResponse.ok) {
@@ -39,21 +35,17 @@ const fetchBysykkelData = async (): Promise<Array<BikeData>> => {
     const statusMap = new Map(
       statusData?.data?.stations.map((station: StationStatus) => [
         station.station_id,
-        station.num_bikes_available,
+        station.num_bikes_available
       ])
     );
 
     return stationList.map((stationName) => {
-      const stationInfo = stationsInfo.find(
-        (station) => station.name === stationName
-      );
-      const bikeCount = stationInfo
-        ? statusMap.get(stationInfo.station_id) ?? 0
-        : 0;
+      const stationInfo = stationsInfo.find((station) => station.name === stationName);
+      const bikeCount = stationInfo ? (statusMap.get(stationInfo.station_id) ?? 0) : 0;
 
       return {
         station: stationName,
-        bikeCount: Number(bikeCount),
+        bikeCount: Number(bikeCount)
       };
     });
   } catch (error) {
@@ -66,6 +58,6 @@ export const useBysykkel = (interval: number = 5000) => {
   return useQuery<Array<BikeData>>({
     queryKey: ["bysykkelData"],
     queryFn: fetchBysykkelData,
-    refetchInterval: interval,
+    refetchInterval: interval
   });
 };

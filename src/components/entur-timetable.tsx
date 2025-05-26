@@ -1,13 +1,11 @@
 import { FaBus } from "react-icons/fa";
 import { BiSolidTrain } from "react-icons/bi";
 
-import useUpcomingDepartures, {
-  EstimatedCall,
-} from "../hooks/use-upcoming-departures";
+import useUpcomingDepartures, { EstimatedCall } from "../hooks/use-upcoming-departures";
 import {
   extractRouteNumber,
   formatTime,
-  getTimeDifferenceInMinutes,
+  getTimeDifferenceInMinutes
 } from "../utils/timetableUtils";
 
 const EnTurTimetable = () => {
@@ -51,40 +49,29 @@ const EnTurTimetable = () => {
           <tbody className="divide-y">
             {data.stopPlace.estimatedCalls
               .filter((call: EstimatedCall) => {
-                const timeDifference = getTimeDifferenceInMinutes(
-                  call.expectedArrivalTime
-                );
+                const timeDifference = getTimeDifferenceInMinutes(call.expectedArrivalTime);
                 return (
                   timeDifference >= 0 &&
-                  extractRouteNumber(
-                    call.serviceJourney.journeyPattern.line.id
-                  ) === "1"
+                  extractRouteNumber(call.serviceJourney.journeyPattern.line.id) === "1"
                 );
               })
               .slice(0, 7)
               .map((call: EstimatedCall, index: number) => {
-                const timeDifference = getTimeDifferenceInMinutes(
-                  call.expectedArrivalTime
-                );
+                const timeDifference = getTimeDifferenceInMinutes(call.expectedArrivalTime);
 
                 const displayTime =
                   call.aimedArrivalTime !== call.expectedArrivalTime
                     ? formatTime(call.aimedArrivalTime)
                     : timeDifference < 15
-                    ? `${timeDifference} min`
-                    : formatTime(call.expectedArrivalTime);
+                      ? `${timeDifference} min`
+                      : formatTime(call.expectedArrivalTime);
 
-                const routeID = extractRouteNumber(
-                  call.serviceJourney.journeyPattern.line.id
-                );
+                const routeID = extractRouteNumber(call.serviceJourney.journeyPattern.line.id);
 
                 const uniqueKey = `${call.expectedArrivalTime}-${routeID}-${call.destinationDisplay.frontText}`;
 
                 return (
-                  <tr
-                    key={uniqueKey}
-                    className={index % 2 === 0 ? "bg-primary/5" : ""}
-                  >
+                  <tr key={uniqueKey} className={index % 2 === 0 ? "bg-primary/5" : ""}>
                     <td className="px-4 py-1">{displayTime}</td>
                     <td>{routeID}</td>
                     <td>{call.destinationDisplay.frontText}</td>
@@ -119,40 +106,29 @@ const EnTurTimetable = () => {
           <tbody className="divide-y">
             {data.stopPlace.estimatedCalls
               .filter((call: EstimatedCall) => {
-                const timeDifference = getTimeDifferenceInMinutes(
-                  call.expectedArrivalTime
-                );
+                const timeDifference = getTimeDifferenceInMinutes(call.expectedArrivalTime);
                 return (
                   timeDifference >= 0 &&
-                  extractRouteNumber(
-                    call.serviceJourney.journeyPattern.line.id
-                  ) !== "1"
+                  extractRouteNumber(call.serviceJourney.journeyPattern.line.id) !== "1"
                 );
               })
               .slice(0, 7)
               .map((call: EstimatedCall, index: number) => {
-                const timeDifference = getTimeDifferenceInMinutes(
-                  call.expectedArrivalTime
-                );
+                const timeDifference = getTimeDifferenceInMinutes(call.expectedArrivalTime);
 
                 const displayTime =
                   call.aimedArrivalTime !== call.expectedArrivalTime
                     ? formatTime(call.aimedArrivalTime)
                     : timeDifference < 15
-                    ? `${timeDifference} min`
-                    : formatTime(call.expectedArrivalTime);
+                      ? `${timeDifference} min`
+                      : formatTime(call.expectedArrivalTime);
 
-                const routeID = extractRouteNumber(
-                  call.serviceJourney.journeyPattern.line.id
-                );
+                const routeID = extractRouteNumber(call.serviceJourney.journeyPattern.line.id);
 
                 const uniqueKey = `${call.expectedArrivalTime}-${routeID}-${call.destinationDisplay.frontText}`;
 
                 return (
-                  <tr
-                    key={uniqueKey}
-                    className={index % 2 === 0 ? "bg-primary/5" : ""}
-                  >
+                  <tr key={uniqueKey} className={index % 2 === 0 ? "bg-primary/5" : ""}>
                     <td className="px-4 py-1">{displayTime}</td>
                     <td>{routeID}</td>
                     <td>{call.destinationDisplay.frontText}</td>

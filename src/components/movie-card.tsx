@@ -19,18 +19,13 @@ export function MovieCard() {
               </div>
               <div className="flex flex-col justify-between space-y-2 h-full p-3 rounded-lg">
                 <div>
-                  <h1 className="text-muted-foreground text-sm">
-                    Neste filmvisning:{" "}
-                  </h1>
-                  <h1 className="font-semibold text-3xl my-2 line-clamp-1">
-                    {nextMovie.title}{" "}
-                  </h1>
+                  <h1 className="text-muted-foreground text-sm">Neste filmvisning: </h1>
+                  <h1 className="font-semibold text-3xl my-2 line-clamp-1">{nextMovie.title} </h1>
                 </div>
                 <div className="h-auto flex items-center justify-center">
                   <div className="w-full text-left space-y-3">
                     <p>
-                      <span className="font-semibold">Dato:</span>{" "}
-                      {dateAndTime(nextMovie.date)}
+                      <span className="font-semibold">Dato:</span> {dateAndTime(nextMovie.date)}
                     </p>
                     <p>
                       <span className="font-semibold">Sted:</span> store aud
@@ -38,9 +33,7 @@ export function MovieCard() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-muted-foreground text-sm">
-                    Ingen påmelding og gratis snacks
-                  </p>
+                  <p className="text-muted-foreground text-sm">Ingen påmelding og gratis snacks</p>
                 </div>
               </div>
             </div>

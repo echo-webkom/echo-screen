@@ -35,9 +35,7 @@ export const ScreenCycle = ({ screens }: ScreenCycleProps) => {
       if (event.key === "ArrowRight") {
         setScreenIndex((prevIndex) => (prevIndex + 1) % screens.length);
       } else if (event.key === "ArrowLeft") {
-        setScreenIndex(
-          (prevIndex) => (prevIndex - 1 + screens.length) % screens.length
-        );
+        setScreenIndex((prevIndex) => (prevIndex - 1 + screens.length) % screens.length);
       }
     };
 

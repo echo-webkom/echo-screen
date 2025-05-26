@@ -14,7 +14,7 @@ export const weekdayAndDate = (date: Date | string) => {
   return d.toLocaleDateString("nb-NO", {
     weekday: "long",
     month: "long",
-    day: "numeric",
+    day: "numeric"
   });
 };
 
@@ -24,7 +24,7 @@ export const yearMonthDateNoDay = (date: Date | string) => {
   return d.toLocaleDateString("nb-NO", {
     day: "numeric",
     month: "short",
-    year: "numeric",
+    year: "numeric"
   });
 };
 
@@ -35,11 +35,7 @@ export const yearMonthDateNoDay = (date: Date | string) => {
  * @param endDate endDate
  * @returns if the date is between the two dates
  */
-export const dateIsBetween = (
-  date: Date,
-  startDate: Date,
-  endDate: Date
-): boolean => {
+export const dateIsBetween = (date: Date, startDate: Date, endDate: Date): boolean => {
   return isAfter(date, startDate) && isBefore(date, endDate);
 };
 

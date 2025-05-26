@@ -6,8 +6,7 @@ export const sanity = createClient({
   projectId: "pgq2pd26",
   dataset: "production",
   useCdn: true,
-  apiVersion: "2023-05-03",
+  apiVersion: "2023-05-03"
 });
 
-export const urlFor = (source: SanityImageSource) =>
-  createImageUrlBuilder(sanity).image(source);
+export const urlFor = (source: SanityImageSource) => createImageUrlBuilder(sanity).image(source);
