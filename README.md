@@ -8,7 +8,6 @@
 
 Infoskjerm på lesesalen til **echo – Linjeforeningen for informatikk** ved Universitetet i Bergen.
 
-
 Utviklet av frivillige informatikkstudenter fra undergruppen **echo Webkom**.
 
 ## Tilbakemeldinger
@@ -23,13 +22,11 @@ eller send oss en mail på [webkom-styret@echo.uib.no](mailto:webkom-styret@echo
 
 ## Hvordan kjøre?
 
-
 1. Last ned "dependencies"
 
    ```sh
    pnpm install
    ```
-
 
 1. Start utviklingsmiljøet
 
@@ -40,4 +37,3 @@ eller send oss en mail på [webkom-styret@echo.uib.no](mailto:webkom-styret@echo
 Sidene som starter er:
 
 - [http://localhost:5173](http://localhost:5173) for nettsiden
-

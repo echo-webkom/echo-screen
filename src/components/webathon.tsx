@@ -12,9 +12,8 @@ export function Webathon() {
         <h1 className="text-5xl font-bold drop-shadow-lg">Webathon 2025</h1>
         <h1 className="text-7xl font-bold drop-shadow-lg">MED BEKK</h1>
         <p className="mt-4 text-lg max-w-2xl">
-          Velkommen til Webathon 2025 – en intens, kreativ og innovativ helg
-          hvor deltakere utfordres til å lage den mest imponerende visuelle
-          applikasjonen!
+          Velkommen til Webathon 2025 – en intens, kreativ og innovativ helg hvor deltakere
+          utfordres til å lage den mest imponerende visuelle applikasjonen!
         </p>
       </motion.div>
 

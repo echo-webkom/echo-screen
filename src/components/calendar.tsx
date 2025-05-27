@@ -1,9 +1,4 @@
-import {
-  dateIsBetween,
-  getCurrentWeekDates,
-  onlyDayName,
-  onlyTimeHHMM,
-} from "../utils/date";
+import { dateIsBetween, getCurrentWeekDates, onlyDayName, onlyTimeHHMM } from "../utils/date";
 import { isSameDay } from "date-fns";
 import { cn } from "../lib/cn";
 import { useHappenings } from "../hooks/use-happenings";
@@ -20,9 +15,7 @@ export default function Calendar() {
         return isSameDay(start, day) || dateIsBetween(day, start, end);
       })
       .sort((a, b) =>
-        a.date && b.date
-          ? new Date(a.date).getTime() - new Date(b.date).getTime()
-          : 0
+        a.date && b.date ? new Date(a.date).getTime() - new Date(b.date).getTime() : 0
       );
   };
 
@@ -37,7 +30,7 @@ export default function Calendar() {
               <p
                 className={cn("border-b p-1 font-semibold", {
                   "bg-primary/30": isToday,
-                  "bg-primary/10": !isToday,
+                  "bg-primary/10": !isToday
                 })}
               >
                 {onlyDayName(day)}
@@ -55,15 +48,11 @@ export default function Calendar() {
                         "border-secondary": type === "event",
                         "border-green-500": type === "boardgame",
                         "border-pink-500": type === "movie",
-                        "border-slate-500": type === "other",
+                        "border-slate-500": type === "other"
                       })}
                     >
                       <p className="text-sm line-clamp-1">
-                        {type === "bedpres"
-                          ? "Bedpres: "
-                          : type === "movie"
-                          ? "Film: "
-                          : ""}
+                        {type === "bedpres" ? "Bedpres: " : type === "movie" ? "Film: " : ""}
                         {title}
                       </p>
                       <p className="text-gray-400 text-xs">

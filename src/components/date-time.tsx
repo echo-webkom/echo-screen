@@ -16,12 +16,11 @@ export default function DateTime() {
   const formattedTime = currentTime.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
-    hour12: false,
+    hour12: false
   });
 
   const formattedDate =
-    weekdayAndDate(currentTime).charAt(0).toUpperCase() +
-    weekdayAndDate(currentTime).slice(1);
+    weekdayAndDate(currentTime).charAt(0).toUpperCase() + weekdayAndDate(currentTime).slice(1);
 
   const weekNumber = getWeek(currentTime);
 

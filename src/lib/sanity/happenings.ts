@@ -2,13 +2,11 @@ import { sanity } from "../sanity";
 import { AllHappeningsQueryResult } from "../sanity.types";
 
 export const fetchAllHappenings = async () => {
-  return await sanity
-    .fetch<AllHappeningsQueryResult>(allHappeningsQuery)
-    .catch(() => {
-      console.error("Failed to fetch all happenings");
+  return await sanity.fetch<AllHappeningsQueryResult>(allHappeningsQuery).catch(() => {
+    console.error("Failed to fetch all happenings");
 
-      return [];
-    });
+    return [];
+  });
 };
 
 const allHappeningsQuery = `

@@ -11,11 +11,7 @@ export function Bysykkel() {
   return (
     <div className="flex gap-10 my-10">
       {data?.map(({ station, bikeCount }) => (
-        <DisplayBysykkel
-          key={station}
-          station={station}
-          bikeCount={bikeCount}
-        />
+        <DisplayBysykkel key={station} station={station} bikeCount={bikeCount} />
       ))}
     </div>
   );

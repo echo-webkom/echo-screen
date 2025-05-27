@@ -13,18 +13,16 @@ export function useHappenings(dates: Date[]) {
       lastWeek.setDate(lastWeek.getDate() - 7);
       const happenings = await getCalendarEvents();
       const filtered = happenings.filter(
-        (happening) =>
-          happening.date >= lastWeek &&
-          happening.date <= dates[dates.length - 1]
+        (happening) => happening.date >= lastWeek && happening.date <= dates[dates.length - 1]
       );
 
       return filtered;
-    },
+    }
   });
 
   return {
     happenings,
-    ...rest,
+    ...rest
   };
 }
 
@@ -48,12 +46,12 @@ export function useNextBedpres() {
         });
 
       return filtered[0] ?? null;
-    },
+    }
   });
 
   return {
     nextBedpres,
-    ...rest,
+    ...rest
   };
 }
 
@@ -63,19 +61,15 @@ export function useNextMovie() {
     queryFn: async () => {
       const movies = await fetchMovies();
       const upcomingMovies = movies
-        .filter(
-          (movie) => movie.date && new Date(movie.date).getTime() >= Date.now()
-        )
-        .sort(
-          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-        );
+        .filter((movie) => movie.date && new Date(movie.date).getTime() >= Date.now())
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
       return upcomingMovies[0] ?? null;
-    },
+    }
   });
 
   return {
     nextMovie,
-    ...rest,
+    ...rest
   };
 }
