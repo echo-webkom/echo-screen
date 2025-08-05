@@ -89,3 +89,8 @@ export function getCurrentWeekDates(): Date[] {
     return date;
   });
 }
+
+export function isAugust(): boolean {
+  const today = new Date();
+  return today.getMonth() === 7;
+}
