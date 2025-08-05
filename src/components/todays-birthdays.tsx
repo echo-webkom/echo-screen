@@ -2,9 +2,11 @@ import { useBirthdays } from "../hooks/use-birthdays";
 
 export default function TodaysBirthdays() {
   const { data } = useBirthdays();
+
   if (!data) {
     return null;
   }
+
   return (
     data.length > 0 && (
       <div className="text-center flex-auto rounded-lg w-fit px-10 py-10 bg-background/70 border-2 shadow-lg">
