@@ -1,5 +1,5 @@
 import { sanity, urlFor } from "../sanity";
-import { MoviesQueryResult } from "../sanity.types";
+import type { MoviesQueryResult } from "../sanity.types";
 
 export const fetchMovies = async () => {
   const movies = await sanity.fetch<MoviesQueryResult>(moviesQuery);

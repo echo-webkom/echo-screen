@@ -1,5 +1,5 @@
 import { sanity } from "../sanity";
-import { HungerGamesQueryResult } from "../sanity.types";
+import type { HungerGamesQueryResult } from "../sanity.types";
 
 export const fetchAllHungerGames = async () => {
   const yesterday = new Date();

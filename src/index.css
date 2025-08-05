@@ -1,21 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: 58 20% 98%;
-    --foreground: 231 16% 12%;
+:root {
+  --background: 58 20% 98%;
+  --foreground: 231 16% 12%;
 
-    --muted: 213 34% 93%;
-    --muted-foreground: 215 22% 43%;
+  --muted: 213 34% 93%;
+  --muted-foreground: 215 22% 43%;
 
-    --border: 214 32% 73%;
+  --border: 214 32% 73%;
 
-    --primary: 186 100% 32%;
-    --secondary: 42 96% 72%;
-  }
+  --primary: 186 100% 32%;
+  --secondary: 42 96% 72%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-border: hsl(var(--border));
+
+  --color-primary: hsl(var(--primary));
+  --color-secondary: hsl(var(--secondary));
 }
 
 * {

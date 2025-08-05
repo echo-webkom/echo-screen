@@ -1,5 +1,6 @@
 import { IoIosBicycle } from "react-icons/io";
-import { useBysykkel, BikeData } from "../hooks/use-bysykkel";
+import { useBysykkel } from "../hooks/use-bysykkel";
+import type { BikeData } from "../hooks/use-bysykkel";
 
 export function Bysykkel() {
   const { data, isLoading, error } = useBysykkel();

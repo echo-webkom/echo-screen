@@ -1,10 +1,9 @@
 import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  define: {
-    __COMMIT_HASH__: JSON.stringify(process.env.CF_PAGES_COMMIT_SHA)
-  }
+  plugins: [react(), tailwindcss(), cloudflare()]
 });

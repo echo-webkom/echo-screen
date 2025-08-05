@@ -3,3 +3,6 @@ build
 coverage
 .wrangler
 node_modules
+*.json
+worker-configuration.d.ts
+public/

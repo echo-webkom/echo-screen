@@ -1,12 +1,13 @@
 import { FaBus } from "react-icons/fa";
 import { BiSolidTrain } from "react-icons/bi";
 
-import useUpcomingDepartures, { EstimatedCall } from "../hooks/use-upcoming-departures";
+import useUpcomingDepartures from "../hooks/use-upcoming-departures";
+import type { EstimatedCall } from "../hooks/use-upcoming-departures";
 import {
   extractRouteNumber,
   formatTime,
   getTimeDifferenceInMinutes
-} from "../utils/timetableUtils";
+} from "../utils/timetable-utils";
 
 const EnTurTimetable = () => {
   const { data, isLoading, isError, error } = useUpcomingDepartures(5000);

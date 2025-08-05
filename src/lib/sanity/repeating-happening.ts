@@ -1,5 +1,5 @@
 import { sanity } from "../sanity";
-import { AllRepeatingHappeningsQueryResult } from "../sanity.types";
+import type { AllRepeatingHappeningsQueryResult } from "../sanity.types";
 
 export const fetchAllRepeatingHappenings = async () => {
   return await sanity
