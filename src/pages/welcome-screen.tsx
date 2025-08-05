@@ -1,3 +1,6 @@
+import vervqr from "../assets/vervqr.png";
+import echoqr from "../assets/echoqr.png";
+
 export default function WelcomeScreen() {
   return (
     <>
@@ -11,21 +14,11 @@ export default function WelcomeScreen() {
       <div className="flex justify-center gap-48 text-6xl font-semibold pt-16 ">
         <div className="flex flex-col justify-center items-center ">
           <h1 className="pb-2">Husk å søke verv!</h1>
-          <img
-            width={580}
-            src="src/assets/vervqr.png"
-            alt=""
-            className="bg-white/50 border-2 rounded-lg shadow-lg"
-          />
+          <img width={580} src={vervqr} className="bg-white/50 border-2 rounded-lg shadow-lg" />
         </div>
         <div className="flex flex-col justify-center items-center ">
           <h1 className="pb-2">Sjekk ut echo.uib.no!</h1>
-          <img
-            width={580}
-            className="bg-white/50 border-2 rounded-lg shadow-lg"
-            src="src/assets/echoqr.png"
-            alt=""
-          />
+          <img width={580} className="bg-white/50 border-2 rounded-lg shadow-lg" src={echoqr} />
         </div>
       </div>
     </>
