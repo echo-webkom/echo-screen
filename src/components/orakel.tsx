@@ -6,8 +6,10 @@ export function Orakel() {
       <div className="mt- grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-white/20 p-4 rounded-lg border-2">
           <h2 className="text-xl font-semibold">📅 Tid</h2>
-          <p className="mt-2 text-md font-bold">Onsdag og Torsdag</p>
+          <p className="mt-2 text-md font-bold">Torsdag</p>
           <p className="mt-2 text-md">14:15 - 16:00</p>
+          <p className="mt-2 text-md font-bold">Fredag</p>
+          <p className="mt-2 text-md">12:15 - 14:00</p>
         </div>
         <div className="bg-white/20 p-4 rounded-lg border-2">
           <h2 className="text-xl font-semibold">📍 Sted</h2>
