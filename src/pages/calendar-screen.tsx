@@ -1,4 +1,3 @@
-import BedpressCountDown from "../components/bedpress-count-down";
 import BdayCountDown from "../components/birthday-countdown";
 import Calendar from "../components/calendar";
 import { Orakel } from "../components/orakel";
