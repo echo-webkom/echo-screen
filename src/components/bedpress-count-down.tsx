@@ -22,11 +22,7 @@ export default function BedpressCountDown() {
   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
   if (!nextBedpres) {
-    return (
-      <h1 className="flex justify-center pt-20 font-semibold text-lg">
-        Ingen bedriftspresentasjoner {`:(`}
-      </h1>
-    );
+    return null
   }
 
   return (
