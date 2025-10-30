@@ -6,6 +6,7 @@ import { TransportScreen } from "./pages/transport-screen";
 import DateTime from "./components/date-time";
 import WelcomeScreen from "./pages/welcome-screen";
 import { isAugust } from "./utils/date";
+import { ReminderScreen } from "./pages/reminder-screen";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -20,7 +21,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen];
+  const visibleScreens = [CalendarScreen, TransportScreen, ReminderScreen];
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }
