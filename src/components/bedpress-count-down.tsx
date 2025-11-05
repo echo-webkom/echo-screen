@@ -22,7 +22,7 @@ export default function BedpressCountDown() {
   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
   if (!nextBedpres) {
-    return null
+    return null;
   }
 
   return (
