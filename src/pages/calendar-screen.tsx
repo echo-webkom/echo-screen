@@ -9,7 +9,6 @@ export const CalendarScreen = () => {
     <div className="w-full h-full flex flex-col gap-7">
       <Calendar />
       <div className="flex gap-7">
-        <BdayCountDown />
         <Orakel />
         <TodaysBirthdays />
         <SnowMinimal />
