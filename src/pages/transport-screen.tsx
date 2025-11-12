@@ -1,5 +1,6 @@
 import { Bysykkel } from "../components/bysykkel";
 import EnTurTimetable from "../components/entur-timetable";
+import { Weather } from "../components/weather";
 import SnowMinimal from "../components/christmas-decoration";
 
 export const TransportScreen = () => {
@@ -8,6 +9,7 @@ export const TransportScreen = () => {
       <EnTurTimetable />
       <Bysykkel />
       <SnowMinimal />
+      <Weather />
     </div>
   );
 };
