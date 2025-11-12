@@ -16,16 +16,6 @@ export function Weather() {
     return <p>Ingen værdata tilgjengelig</p>;
   }
 
-  if (!weather.temperature) {
-    return <p>Laster værdata...</p>;
-  }
-  if (!weather.wind_speed) {
-    return <p>Laster vinddata...</p>;
-  }
-  if (!weather.condition) {
-    return <p>Laster skydata...</p>;
-  }
-
   const { WeatherIcon, norCond } = getIconForCondition(weather.condition);
   const { TempIcon, temp } = getTempIcon(weather.temperature);
 
@@ -37,7 +27,7 @@ export function Weather() {
       </div>
 
       <div className="flex items-center gap-1">
-        <span>{norCond}</span>
+        {norCond && <span>{norCond}</span>}
         {WeatherIcon && <WeatherIcon className="text-md opacity-80" />}
       </div>
 
@@ -57,11 +47,10 @@ function getTempIcon(temperature: string) {
     TempIcon = FaTemperatureLow;
   } else if (temp > 0 && temp < 15) {
     TempIcon = FaTemperatureHalf;
-  } else if (temp >= 15) {
-    TempIcon = FaTemperatureFull;
   } else {
-    TempIcon = null;
+    TempIcon = FaTemperatureFull;
   }
+
   return { TempIcon, temp };
 }
 
