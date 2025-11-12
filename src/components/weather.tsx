@@ -20,7 +20,7 @@ export function Weather() {
   const { TempIcon, temp } = getTempIcon(weather.temperature);
 
   return (
-    <div className="flex items-center gap-4 text-md text-gray-700">
+    <div className="flex items-center gap-4 text-sm text-gray-700">
       <div className="flex items-center gap-1">
         <span>{temp}°C</span>
         {TempIcon && <TempIcon className="text-md opacity-80" />}
@@ -60,19 +60,19 @@ function getIconForCondition(condition: string) {
   switch (condition) {
     case "rainy":
       WeatherIcon = TiWeatherDownpour;
-      norCond = "regn";
+      norCond = "Regn";
       break;
     case "cloudy":
       WeatherIcon = TiWeatherCloudy;
-      norCond = "skyet";
+      norCond = "Skyet";
       break;
     case "snowy":
       WeatherIcon = TiWeatherSnow;
-      norCond = "snø";
+      norCond = "Snø";
       break;
     case "sunny":
       WeatherIcon = TiWeatherSunny;
-      norCond = "sol";
+      norCond = "Sols";
       break;
     default:
       WeatherIcon = null;
