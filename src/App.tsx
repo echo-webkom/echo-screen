@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ScreenCycle } from "./components/screen-cycle";
 import { CalendarScreen } from "./pages/calendar-screen";
+import { MessageScreen } from "./pages/message-screen";
 import { TransportScreen } from "./pages/transport-screen";
 import DateTime from "./components/date-time";
-import WelcomeScreen from "./pages/welcome-screen";
 import { isAugust } from "./utils/date";
+<<<<<<< HEAD
 import { ReminderScreen } from "./pages/reminder-screen";
 import SnowMinimal from "./components/christmas-decoration";
+=======
+import WelcomeScreen from "./pages/welcome-screen";
+>>>>>>> 678b872 (adding latest message from board to screen)
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -22,7 +26,11 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+<<<<<<< HEAD
   const visibleScreens = [CalendarScreen, TransportScreen, ReminderScreen];
+=======
+  const visibleScreens = [MessageScreen];
+>>>>>>> 678b872 (adding latest message from board to screen)
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }
