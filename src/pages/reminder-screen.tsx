@@ -4,7 +4,9 @@ export const ReminderScreen = () => {
       <div className="flex items-center justify-center w-full h-full pt-12">
         <div className="bg-background/70 overflow-hidden rounded-4xl w-9/10 min-h-full border-2 !border-[#d0a4a4] flex flex-col">
           <div className="bg-red-700 text-background pb-5 pt-2 !border-b-[#d0a4a4] border-b-2">
-            <h1 className="flex text-6xl p-3 font-semibold text-center flex-col">Hold det ryddig!</h1>
+            <h1 className="flex text-6xl p-3 font-semibold text-center flex-col">
+              Hold det ryddig!
+            </h1>
           </div>
           <div className="flex flex-col pt-5">
             <p className="text-3xl p-3 text-center">
