@@ -54,17 +54,17 @@ export function Weather() {
         <div className="flex items-center gap-4 text-md text-gray-700">
             <div className="flex items-center gap-1">
                 <span>{weather.temperature}°C</span>
-                {TemperatureIcon && <TemperatureIcon className="text-lg opacity-80" />}
+                {TemperatureIcon && <TemperatureIcon className="text-md opacity-80" />}
             </div>
 
             <div className="flex items-center gap-1">
                 <span>{cond}</span>
-                {WeatherIcon && <WeatherIcon className="text-lg opacity-80" />}
+                {WeatherIcon && <WeatherIcon className="text-md opacity-80" />}
             </div>
 
             <div className="flex items-center gap-1">
                 <span>{weather.wind_speed} m/s</span>
-                <TiWeatherWindy className="text-lg opacity-80" />
+                <TiWeatherWindy className="text-md opacity-80" />
             </div>
         </div>
     );
