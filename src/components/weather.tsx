@@ -1,4 +1,7 @@
 import { useWeather } from "../hooks/use-weather";
+import { TiWeatherDownpour, TiWeatherCloudy, TiWeatherSnow, TiWeatherSunny, TiWeatherWindy } from "react-icons/ti";
+import { FaTemperatureLow } from "react-icons/fa";
+import { FaTemperatureHalf, FaTemperatureFull } from "react-icons/fa6";
 
 export function Weather() {
     const {data: weather} = useWeather();
@@ -9,12 +12,61 @@ export function Weather() {
     if (!weather.wind_speed) { return <p>Laster vinddata...</p>; }
     if (!weather.condition) { return <p>Laster skydata...</p>; }
 
+    let WeatherIcon;
+    let cond;
+    switch (weather.condition) {
+        case "rainy":
+            WeatherIcon = TiWeatherDownpour;
+            cond = "regn"
+            break;
+        case "cloudy":
+            WeatherIcon = TiWeatherCloudy;
+            cond = "skyet"
+            break;
+        case "snowy":
+            WeatherIcon = TiWeatherSnow;
+            cond = "snø"
+            break;
+        case "sunny":
+            WeatherIcon = TiWeatherSunny;
+            cond = "sol"
+            break;
+        default:
+            WeatherIcon = null;
+            cond = null;
+    }
+
+    let TemperatureIcon;
+    const temp = parseFloat(weather.temperature);
+    if (temp <= 0) {
+        TemperatureIcon = FaTemperatureLow;
+    }
+    else if (temp > 0 && temp < 15) {
+        TemperatureIcon = FaTemperatureHalf;
+    }
+    else if (temp >= 15) {
+        TemperatureIcon = FaTemperatureFull;
+    } else {
+        TemperatureIcon = null;
+    }
+
     return (
-        <div className="bg-white/30 rounded-md w-1/2 px-4 py-3 space-y-2 border-2">
-            <h1 className="font-medium text-lg py-2">Nåværende vær:</h1>
-            <p>Temperatur: {weather.temperature}°C</p>
-            <p>Værforhold: {weather.condition}</p>
-            <p>Vindhastighet: {weather.wind_speed} m/s</p>
+        <div className="flex items-center gap-4 text-md text-gray-700">
+            <div className="flex items-center gap-1">
+                <span>{weather.temperature}°C</span>
+                {TemperatureIcon && <TemperatureIcon className="text-lg opacity-80" />}
+            </div>
+
+            <div className="flex items-center gap-1">
+                <span>{cond}</span>
+                {WeatherIcon && <WeatherIcon className="text-lg opacity-80" />}
+            </div>
+
+            <div className="flex items-center gap-1">
+                <span>{weather.wind_speed} m/s</span>
+                <TiWeatherWindy className="text-lg opacity-80" />
+            </div>
         </div>
     );
+
 }

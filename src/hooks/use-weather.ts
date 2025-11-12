@@ -9,7 +9,7 @@ export type WeatherData = {
 
 export const useWeather = () => {
   return useQuery({
-    queryKey: ["weather"], // weather?
+    queryKey: ["weather"],
     queryFn: async () => {
       const weather = await fetch(API_URL).then(
         (res) => res.json() as Promise<WeatherData>

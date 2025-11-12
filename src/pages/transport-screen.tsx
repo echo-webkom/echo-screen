@@ -8,8 +8,8 @@ export const TransportScreen = () => {
     <div className="w-full h-full">
       <EnTurTimetable />
       <Bysykkel />
-      <SnowMinimal />
       <Weather />
+      <SnowMinimal />
     </div>
   );
 };
