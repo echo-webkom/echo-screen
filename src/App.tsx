@@ -6,12 +6,9 @@ import { MessageScreen } from "./pages/message-screen";
 import { TransportScreen } from "./pages/transport-screen";
 import DateTime from "./components/date-time";
 import { isAugust } from "./utils/date";
-<<<<<<< HEAD
-import { ReminderScreen } from "./pages/reminder-screen";
 import SnowMinimal from "./components/christmas-decoration";
-=======
 import WelcomeScreen from "./pages/welcome-screen";
->>>>>>> 678b872 (adding latest message from board to screen)
+// import { ReminderScreen } from "./pages/reminder-screen";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -26,11 +23,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-<<<<<<< HEAD
-  const visibleScreens = [CalendarScreen, TransportScreen, ReminderScreen];
-=======
-  const visibleScreens = [MessageScreen];
->>>>>>> 678b872 (adding latest message from board to screen)
+  const visibleScreens = [CalendarScreen, TransportScreen, MessageScreen];
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }
