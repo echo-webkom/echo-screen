@@ -21,14 +21,16 @@ export default function SnowMinimal() {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     function rand(min: number, max: number) {
-        return Math.random() * (max - min) + min;
+      return Math.random() * (max - min) + min;
     }
 
-    let w = 0, h = 0, DPR = 1;
+    let w = 0,
+      h = 0,
+      DPR = 1;
     const resize = () => {
       w = window.innerWidth;
       h = window.innerHeight;
-      DPR = Math.min(Math.max(window.devicePixelRatio || 1, 1),2);
+      DPR = Math.min(Math.max(window.devicePixelRatio || 1, 1), 2);
       canvas.width = Math.floor(w * DPR);
       canvas.height = Math.floor(h * DPR);
       canvas.style.width = w + "px";
@@ -41,7 +43,6 @@ export default function SnowMinimal() {
     const dotSprite = makeDotSprite(dotSize * 2);
     const flakeSprite = makeSnowflakeSprite(flakeSpriteSize);
 
-
     type Kind = "dot" | "flake";
     type Flake = { x: number; y: number; kind: Kind; rot: number; vr: number };
 
@@ -53,7 +54,7 @@ export default function SnowMinimal() {
         y: randomInt(0, h),
         kind: Math.random() < fancyRatio ? "flake" : "dot",
         rot: Math.random() * Math.PI * 2,
-        vr: rand(-0.02, 0.02),
+        vr: rand(-0.02, 0.02)
       });
     }
 
@@ -63,7 +64,6 @@ export default function SnowMinimal() {
 
       for (let i = 0; i < flakes.length; i += 1) {
         const f = flakes[i];
-
 
         ctx.save();
         ctx.translate(f.x, f.y);
@@ -113,7 +113,7 @@ export default function SnowMinimal() {
         width: "100vw",
         height: "100vh",
         pointerEvents: "none",
-        zIndex: 9999,
+        zIndex: 9999
       }}
     />
   );
@@ -144,7 +144,7 @@ function makeSnowflakeSprite(size: number): HTMLCanvasElement {
   for (let a = 0; a < 6; a++) {
     g.save();
     g.rotate((a * Math.PI) / 3);
- 
+
     g.beginPath();
     g.moveTo(0, 0);
     g.lineTo(0, -armLen);

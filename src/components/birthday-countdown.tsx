@@ -29,15 +29,15 @@ export default function BdayCountDown() {
 
   if (isBirthdayToday) {
     return (
-        <div className="text-center flex w-100 flex-col justify-center items-center rounded-lg mb-1 pb-20 px-10 py-10 bg-background/70 border-2 shadow-lg">
-            <h1 className="font-semibold text-5xl pb-7">echo</h1>
-            <p className="text-2xl">Gratulerer med dagen!</p>
-            <p className="text-2xl">🥳🎉</p>
-        </div>
+      <div className="text-center flex w-100 flex-col justify-center items-center rounded-lg mb-1 pb-20 px-10 py-10 bg-background/70 border-2 shadow-lg">
+        <h1 className="font-semibold text-5xl pb-7">echo</h1>
+        <p className="text-2xl">Gratulerer med dagen!</p>
+        <p className="text-2xl">🥳🎉</p>
+      </div>
     );
   }
-  
-   return (
+
+  return (
     <div className="text-center flex-auto rounded-lg px-10 py-10 bg-background/70 border-2 shadow-lg">
       <h1 className="font-semibold text-3xl mt-5 pb-10 h-20">echo bursdag 🥳</h1>
       <p className="pb-3 h-14">Bursdagsfest om:</p>
@@ -50,7 +50,15 @@ export default function BdayCountDown() {
     </div>
   );
 
-  function TimeBox({ label, value, pad: doPad = false }: { label: string; value: number; pad?: boolean }) {
+  function TimeBox({
+    label,
+    value,
+    pad: doPad = false
+  }: {
+    label: string;
+    value: number;
+    pad?: boolean;
+  }) {
     return (
       <div className="flex flex-col items-center w-12">
         <span className="font-semibold text-2xl tabular-nums">{doPad ? pad(value) : value}</span>
