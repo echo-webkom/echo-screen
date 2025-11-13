@@ -12,8 +12,8 @@ import { FaTemperatureHalf, FaTemperatureFull } from "react-icons/fa6";
 export function Weather() {
   const { data: weather } = useWeather();
 
-  if (!weather) {
-    return <p>Ingen værdata tilgjengelig</p>;
+  if (!weather?.temperature) {
+    return null;
   }
 
   const { WeatherIcon, norCond } = getIconForCondition(weather.condition);
