@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ScreenCycle } from "./components/screen-cycle";
 import { CalendarScreen } from "./pages/calendar-screen";
-// import { MessageScreen } from "./pages/message-screen";
+import { MessageScreen } from "./pages/message-screen";
 import { TransportScreen } from "./pages/transport-screen";
 import DateTime from "./components/date-time";
 import { isAugust } from "./utils/date";
@@ -23,7 +23,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen, ReminderScreen];
+  const visibleScreens = [CalendarScreen, TransportScreen, ReminderScreen, MessageScreen];
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }
