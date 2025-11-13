@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ScreenCycle } from "./components/screen-cycle";
 import { CalendarScreen } from "./pages/calendar-screen";
-import { MessageScreen } from "./pages/message-screen";
+// import { MessageScreen } from "./pages/message-screen";
 import { TransportScreen } from "./pages/transport-screen";
 import DateTime from "./components/date-time";
 import { isAugust } from "./utils/date";
 import SnowMinimal from "./components/christmas-decoration";
 import WelcomeScreen from "./pages/welcome-screen";
-// import { ReminderScreen } from "./pages/reminder-screen";
+import { ReminderScreen } from "./pages/reminder-screen";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -23,7 +23,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen, MessageScreen];
+  const visibleScreens = [CalendarScreen, TransportScreen, ReminderScreen];
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }

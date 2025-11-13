@@ -6,8 +6,8 @@ const messageQuery = `
   title,
   "body": coalesce(pt::text(body), body)
 }
-`
+`;
 
-export const fetchMessages = async () =>{
-      return await sanity.fetch(messageQuery);
-}
+export const fetchMessages = async () => {
+  return await sanity.fetch(messageQuery);
+};
