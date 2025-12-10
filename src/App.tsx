@@ -8,7 +8,6 @@ import DateTime from "./components/date-time";
 import { isAugust } from "./utils/date";
 import SnowMinimal from "./components/christmas-decoration";
 import WelcomeScreen from "./pages/welcome-screen";
-import { ReminderScreen } from "./pages/reminder-screen";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -23,7 +22,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen, ReminderScreen, MessageScreen];
+  const visibleScreens = [CalendarScreen, TransportScreen, MessageScreen];
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }
