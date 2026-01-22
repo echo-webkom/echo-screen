@@ -1,7 +1,17 @@
+import { useEffect } from "react";
 import { useMessage } from "../hooks/use-message";
 
 export const MessageScreen = () => {
   const { data: message } = useMessage();
+
+  useEffect(() => {
+    const createdAtMs = new Date(message?.createdAt).getTime();
+    const weekMs = 7 * 24 * 60 * 60 * 1000;
+
+    if (new Date().getTime() < createdAtMs + weekMs) {
+      return undefined;
+    }
+  }, [message]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full py-20 px-8">

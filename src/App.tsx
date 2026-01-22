@@ -22,7 +22,12 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen, MessageScreen];
+  const visibleScreens = [CalendarScreen, TransportScreen];
+
+  if (MessageScreen != undefined) {
+    visibleScreens.push(MessageScreen);
+  }
+
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }
