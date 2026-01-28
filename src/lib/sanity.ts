@@ -1,6 +1,5 @@
 import { createClient } from "@sanity/client";
-import createImageUrlBuilder from "@sanity/image-url";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { type SanityImageSource, createImageUrlBuilder } from "@sanity/image-url";
 
 export const sanity = createClient({
   projectId: "pgq2pd26",
