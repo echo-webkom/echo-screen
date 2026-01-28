@@ -94,3 +94,13 @@ export function isAugust(): boolean {
   const today = new Date();
   return today.getMonth() === 7;
 }
+
+export function isValentinesSeason(date: Date = new Date()): boolean {
+  const month = date.getMonth(); // 0 = jan, 1 = feb
+  const day = date.getDate();
+
+  if (month === 0 && day >= 28) return true;
+  if (month === 1 && day <= 15) return true;
+
+  return false;
+}
