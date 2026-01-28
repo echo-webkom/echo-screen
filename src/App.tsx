@@ -6,7 +6,6 @@ import { MessageScreen } from "./pages/message-screen";
 import { TransportScreen } from "./pages/transport-screen";
 import DateTime from "./components/date-time";
 import { isAugust } from "./utils/date";
-import SnowMinimal from "./components/christmas-decoration";
 import WelcomeScreen from "./pages/welcome-screen";
 
 export default function App() {
@@ -32,7 +31,6 @@ export default function App() {
       <main className="p-8 pb-0 space-y-5 h-screen flex flex-col">
         <DateTime />
         <ScreenCycle screens={visibleScreens} />
-        <SnowMinimal />
       </main>
     </QueryClientProvider>
   );
