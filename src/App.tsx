@@ -7,7 +7,7 @@ import DateTime from "./components/date-time";
 import WelcomeScreen from "./pages/welcome-screen";
 import { isAugust } from "./utils/date";
 import { ReminderScreen } from "./pages/reminder-screen";
-import SnowMinimal from "./components/christmas-decoration";
+// import SnowMinimal from "./components/christmas-decoration";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -32,7 +32,6 @@ export default function App() {
       <main className="p-8 pb-0 space-y-5 h-screen flex flex-col">
         <DateTime />
         <ScreenCycle screens={visibleScreens} />
-        <SnowMinimal />
       </main>
     </QueryClientProvider>
   );
