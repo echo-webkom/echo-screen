@@ -7,7 +7,7 @@ import { TransportScreen } from "./pages/transport-screen";
 import DateTime from "./components/date-time";
 import { isAugust, isValentinesSeason } from "./utils/date";
 import WelcomeScreen from "./pages/welcome-screen";
-
+import { AutoReload } from "./components/auto-reload";
 
 export default function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -27,15 +27,16 @@ export default function App() {
     visibleScreens.push(WelcomeScreen);
   }
 
-  const isValentines =isValentinesSeason();
+  const isValentines = isValentinesSeason();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <main className={`p-8 pb-0 space-y-5 h-screen flex flex-col ${
-    isValentines
-      ? "bg-gradient-to-tl from-pink-400 via-pink-200 to-pink-300"
-      : ""
-  }`}>
+      <AutoReload />
+      <main
+        className={`p-8 pb-0 space-y-5 h-screen flex flex-col ${
+          isValentines ? "bg-linear-to-tl from-pink-400 via-pink-200 to-pink-300" : ""
+        }`}
+      >
         <DateTime />
         <ScreenCycle screens={visibleScreens} />
       </main>

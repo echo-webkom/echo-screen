@@ -33,3 +33,5 @@ jobs:
 
       - name: 👷🏻‍♂️ Build
         run: pnpm build
+        env:
+          WORKERS_CI_COMMIT_SHA: ${{ github.sha }}

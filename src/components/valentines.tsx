@@ -69,7 +69,7 @@ export default function HeartsMinimal() {
         s: rand(12, 22),
         vy: rand(0.6, 1.2),
         vx: rand(0.6, 1.15),
-        alpha: rand(0.45, 0.8),
+        alpha: rand(0.45, 0.8)
       });
     }
 
@@ -136,7 +136,7 @@ export default function HeartsMinimal() {
         width: "100vw",
         height: "100vh",
         pointerEvents: "none",
-        zIndex: 9999,
+        zIndex: 9999
       }}
     />
   );
