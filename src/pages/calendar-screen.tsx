@@ -2,7 +2,7 @@ import BdayCountDown from "../components/birthday-countdown";
 import Calendar from "../components/calendar";
 import { Orakel } from "../components/orakel";
 import TodaysBirthdays from "../components/todays-birthdays";
-import SnowMinimal from "../components/christmas-decoration";
+// import SnowMinimal from "../components/christmas-decoration";
 
 export const CalendarScreen = () => {
   return (
@@ -12,7 +12,6 @@ export const CalendarScreen = () => {
         <BdayCountDown />
         <Orakel />
         <TodaysBirthdays />
-        <SnowMinimal />
       </div>
     </div>
   );
