@@ -20,20 +20,20 @@ export function Weather() {
   const { TempIcon, temp } = getTempIcon(weather.temperature);
 
   return (
-    <div className="flex items-center gap-4 text-sm text-gray-700">
+    <div className="flex items-center gap-x-4 text-sm text-gray-700">
       <div className="flex items-center gap-1">
-        <span>{temp}°C</span>
         {TempIcon && <TempIcon className="text-md opacity-80" />}
+        <span>{temp}°C</span>
       </div>
 
       <div className="flex items-center gap-1">
-        {norCond && <span>{norCond}</span>}
         {WeatherIcon && <WeatherIcon className="text-md opacity-80" />}
+        {norCond && <span>{norCond}</span>}
       </div>
 
       <div className="flex items-center gap-1">
-        <span>{weather.wind_speed} m/s</span>
         <TiWeatherWindy className="text-md opacity-80" />
+        <span>{weather.wind_speed} m/s</span>
       </div>
     </div>
   );
@@ -72,7 +72,7 @@ function getIconForCondition(condition: string) {
       break;
     case "sunny":
       WeatherIcon = TiWeatherSunny;
-      norCond = "Sols";
+      norCond = "Sol";
       break;
     default:
       WeatherIcon = null;

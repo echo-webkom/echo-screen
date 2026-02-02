@@ -9,9 +9,14 @@
   --muted-foreground: 215 22% 43%;
 
   --border: 214 32% 73%;
+  --valentines-border: 338, 68%, 63%;
 
   --primary: 186 100% 32%;
   --secondary: 42 96% 72%;
+}
+
+.valentines {
+  --border: 338, 68%, 63%;
 }
 
 @theme inline {
@@ -22,6 +27,7 @@
   --color-muted-foreground: hsl(var(--muted-foreground));
 
   --color-border: hsl(var(--border));
+  --color-valentines-border: hsl(var(--valentines-border));
 
   --color-primary: hsl(var(--primary));
   --color-secondary: hsl(var(--secondary));

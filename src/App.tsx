@@ -28,12 +28,13 @@ export default function App() {
   }
 
   const isValentines = isValentinesSeason();
+  document.body.classList.toggle("valentines", isValentines);
 
   return (
     <QueryClientProvider client={queryClient}>
       <AutoReload />
       <main
-        className={`p-8 pb-0 space-y-5 h-screen flex flex-col ${
+        className={`px-6 pt-6 pb-0 space-y-5 h-screen flex flex-col ${
           isValentines ? "bg-linear-to-tl from-pink-400 via-pink-200 to-pink-300" : ""
         }`}
       >
