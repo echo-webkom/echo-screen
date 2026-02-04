@@ -4,7 +4,8 @@ const messageQuery = `
 *[_type == "post" && "board" in authors[]->groupType]
 | order(_createdAt desc)[0]{
   title,
-  "body": coalesce(pt::text(body), body)
+  "body": coalesce(pt::text(body), body),
+  _createdAt
 }
 `;
 

@@ -45,6 +45,8 @@ export const ScreenCycle = ({ screens }: ScreenCycleProps) => {
 
   const CurrentScreen = screens[screenIndex];
 
+  console.log("CS", screens[screenIndex]);
+
   return (
     <div className="flex-1">
       {/* `key` is hack to force unmount the progressbar on change */}
