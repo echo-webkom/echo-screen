@@ -104,3 +104,9 @@ export function isValentinesSeason(date: Date = new Date()): boolean {
 
   return false;
 }
+
+export function isMsgExpired(createdAt: string): boolean {
+  const createdDate = new Date(createdAt);
+  const expiryDate = new Date(createdDate.getTime() + 24 * 60 * 60 * 1000);
+  return isBefore(new Date(), expiryDate);
+}

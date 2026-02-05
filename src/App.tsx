@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { ScreenCycle } from "./components/screen-cycle";
 import { CalendarScreen } from "./pages/calendar-screen";
 import { MessageScreen } from "./pages/message-screen";
 import { TransportScreen } from "./pages/transport-screen";
 import DateTime from "./components/date-time";
-import { isAugust, isValentinesSeason } from "./utils/date";
+import { isAugust, isMsgExpired, isValentinesSeason } from "./utils/date";
 import WelcomeScreen from "./pages/welcome-screen";
 import { AutoReload } from "./components/auto-reload";
+import { useMessage } from "./hooks/use-message";
 
 export default function App() {
-  const [queryClient] = useState(() => new QueryClient());
+  const { data: message } = useMessage();
 
   useEffect(() => {
     const interval = setInterval(
@@ -22,16 +22,20 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen, MessageScreen];
+  const visibleScreens = [CalendarScreen, TransportScreen];
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
+  }
+
+  if (message?.title && message?.body && isMsgExpired(message._createdAt)) {
+    visibleScreens.push(MessageScreen);
   }
 
   const isValentines = isValentinesSeason();
   document.body.classList.toggle("valentines", isValentines);
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <AutoReload />
       <main
         className={`px-6 pt-6 pb-0 space-y-5 h-screen flex flex-col ${
@@ -41,6 +45,6 @@ export default function App() {
         <DateTime />
         <ScreenCycle screens={visibleScreens} />
       </main>
-    </QueryClientProvider>
+    </>
   );
 }
