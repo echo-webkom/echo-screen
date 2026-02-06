@@ -17,6 +17,7 @@
 
 .valentines {
   --border: 338, 68%, 63%;
+  --primary: 338, 68%, 63%
 }
 
 @theme inline {
