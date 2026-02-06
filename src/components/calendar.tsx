@@ -20,7 +20,7 @@ export default function Calendar() {
   };
 
   return (
-    <div className="text-center rounded-lg bg-background/70 border-2 overflow-hidden shadow-lg h-60">
+    <div className="text-center rounded-lg bg-background/70 border-2 overflow-hidden shadow-lg h-56">
       <div className="grid grid-cols-7 h-full divide-x">
         {days.map((day) => {
           const isToday = isSameDay(day, new Date());
