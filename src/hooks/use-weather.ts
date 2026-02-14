@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-const API_URL = "https://weather.echo-webkom.no/weather";
+const API_URL = "https://uno.echo-webkom.no/weather/yr";
 export type WeatherData = {
   temperature: string;
   condition: string;
