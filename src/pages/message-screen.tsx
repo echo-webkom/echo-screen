@@ -1,5 +1,5 @@
 import { useMessage } from "../hooks/use-message";
-import HeartsMinimal from "../components/valentines";
+// import HeartsMinimal from "../components/valentines";
 
 export const MessageScreen = () => {
   const { data: message } = useMessage();
@@ -17,7 +17,6 @@ export const MessageScreen = () => {
           {message?.body}
         </p>
       </div>
-      <HeartsMinimal />
     </div>
   );
 };
