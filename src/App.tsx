@@ -8,7 +8,6 @@ import { isAugust, isMsgExpired, isValentinesSeason } from "./utils/date";
 import WelcomeScreen from "./pages/welcome-screen";
 import { AutoReload } from "./components/auto-reload";
 import { useMessage } from "./hooks/use-message";
-import { GeneralforsamlingScreen } from "./pages/generalforsamling-screen";
 
 export default function App() {
   const { data: message } = useMessage();
@@ -23,7 +22,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen, GeneralforsamlingScreen];
+  const visibleScreens = [CalendarScreen, TransportScreen];
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }
