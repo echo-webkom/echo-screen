@@ -21,17 +21,17 @@
 }
 
 .dark {
-  --background: 230 25% 3%;
-  --foreground: 0 0% 96%;
+  --background: 220 40% 6%;
+  --foreground: 210 40% 96%;
 
-  --muted: 230 18% 8%;
-  --muted-foreground: 215 15% 70%;
+  --muted: 220 35% 10%;
+  --muted-foreground: 215 20% 70%;
 
-  --border: 230 15% 18%;
+  --border: 220 25% 28%;
   --valentines-border: 338 70% 60%;
 
-  --primary: 185 70% 12%;
-  --secondary: 42 60% 18%;
+  --primary: 215 65% 28%;
+  --secondary: 220 65% 12%;
 }
 
 @theme inline {
@@ -57,5 +57,5 @@ body {
 }
 
 .dark body {
-  @apply from-primary/75 to-secondary/75;
+  @apply to-primary/60 from-secondary/90;
 }

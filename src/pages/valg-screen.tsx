@@ -5,7 +5,7 @@ export const ValgScreen = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Still selv */}
           <div className="flex flex-col items-center">
-            <h1 className="text-5xl font-semibold text-gray-700 mb-4">Still til HS 26/27</h1>
+            <h1 className="text-5xl font-semibold  mb-4">Still til HS 26/27</h1>
 
             <p className="text-gray-600 mb-6">Vil du bidra i echo i 2026/2027?</p>
 
@@ -18,7 +18,7 @@ export const ValgScreen = () => {
 
           {/* Nominer */}
           <div className="flex flex-col items-center">
-            <h1 className="text-4xl font-semibold text-gray-700 mb-4">Nominer noen til HS 26/27</h1>
+            <h1 className="text-4xl font-semibold  mb-4">Nominer noen til HS 26/27</h1>
 
             <p className="text-gray-600 mb-6">Kjenner du noen som passer i styret?</p>
 

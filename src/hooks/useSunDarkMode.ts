@@ -7,7 +7,7 @@ export const useSunDarkMode = () => {
       const now = new Date();
       const times = SunCalc.getTimes(now, lat, lon);
 
-      const shouldBeDark = true; //now > times.sunset || now < times.sunrise;
+      const shouldBeDark = now > times.sunset || now < times.sunrise;
 
       document.documentElement.classList.toggle("dark", shouldBeDark);
     };
