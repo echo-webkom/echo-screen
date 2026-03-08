@@ -9,7 +9,7 @@ import WelcomeScreen from "./pages/welcome-screen";
 import { AutoReload } from "./components/auto-reload";
 import { useMessage } from "./hooks/use-message";
 import { ValgScreen } from "./pages/valg-screen";
-import { useSunDarkMode } from "./hooks/useSunDarkMode";
+import { useSunDarkMode } from "./hooks/use-sun-dark-mode";
 
 export default function App() {
   const { data: message } = useMessage();
