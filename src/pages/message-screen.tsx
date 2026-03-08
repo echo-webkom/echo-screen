@@ -1,4 +1,6 @@
 import { useMessage } from "../hooks/use-message";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 // import HeartsMinimal from "../components/valentines";
 
 export const MessageScreen = () => {
@@ -14,7 +16,7 @@ export const MessageScreen = () => {
         )}
 
         <p className="text-2xl leading-relaxed text-gray-800 whitespace-pre-line">
-          {message?.body}
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{message?.body}</ReactMarkdown>
         </p>
       </div>
     </div>
