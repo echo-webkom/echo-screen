@@ -3,7 +3,10 @@ import SunCalc from "suncalc";
 
 export const useSunDarkMode = () => {
   useEffect(() => {
-    const updateTheme = (lat: number, lon: number) => {
+    const updateTheme = () => {
+      const lat = 60.39299;
+      const lon = 5.32415;
+
       const now = new Date();
       const times = SunCalc.getTimes(now, lat, lon);
 
@@ -12,12 +15,10 @@ export const useSunDarkMode = () => {
       document.documentElement.classList.toggle("dark", shouldBeDark);
     };
 
-    navigator.geolocation.getCurrentPosition(({ coords }) => {
-      updateTheme(coords.latitude, coords.longitude);
+    updateTheme();
 
-      setInterval(() => {
-        updateTheme(coords.latitude, coords.longitude);
-      }, 60000);
-    });
+    setInterval(() => {
+      updateTheme();
+    }, 60000);
   }, []);
 };
