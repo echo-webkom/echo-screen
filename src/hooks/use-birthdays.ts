@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-const API_URL = import.meta.env.PROD ? "https://api.echo-webkom.no" : "http://localhost:8000";
+const API_URL = import.meta.env.PROD ? "https://uno.echo-webkom.no" : "http://localhost:8000";
 
 export const useBirthdays = () => {
   return useQuery({
