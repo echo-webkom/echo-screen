@@ -25,7 +25,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen, ValgScreen];
+  const visibleScreens = [CalendarScreen, TransportScreen];
   if (isAugust()) {
     visibleScreens.push(WelcomeScreen);
   }
