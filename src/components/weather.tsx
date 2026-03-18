@@ -20,7 +20,7 @@ export function Weather() {
   const { TempIcon, temp } = getTempIcon(weather.temperature);
 
   return (
-    <div className="flex items-center gap-x-4 text-sm text-gray-700">
+    <div className="flex items-center gap-x-4 text-sm text-muted-foreground">
       <div className="flex items-center gap-1">
         {TempIcon && <TempIcon className="text-md opacity-80" />}
         <span>{temp}°C</span>

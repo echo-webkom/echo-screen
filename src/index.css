@@ -17,7 +17,21 @@
 
 .valentines {
   --border: 338, 68%, 63%;
-  --primary: 338, 68%, 63%
+  --primary: 338, 68%, 63%;
+}
+
+.dark {
+  --background: 24 10% 7%;
+  --foreground: 0 0% 96%;
+
+  --muted: 230 18% 8%;
+  --muted-foreground: 215 15% 70%;
+
+  --border: 230 15% 18%;
+  --valentines-border: 338 70% 60%;
+
+  --primary: 185 70% 12%;
+  --secondary: 42 60% 18%;
 }
 
 @theme inline {
@@ -40,4 +54,8 @@
 
 body {
   @apply text-foreground/90 font-sans bg-gradient-to-tl from-primary/50 to-secondary/50 h-screen;
+}
+
+.dark body {
+  @apply bg-none bg-background;
 }
