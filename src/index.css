@@ -21,7 +21,7 @@
 }
 
 .dark {
-  --background: 230 25% 3%;
+  --background: 24 10% 7%;
   --foreground: 0 0% 96%;
 
   --muted: 230 18% 8%;
@@ -57,5 +57,5 @@ body {
 }
 
 .dark body {
-  @apply from-primary/75 to-secondary/75;
+  @apply bg-none bg-background;
 }
