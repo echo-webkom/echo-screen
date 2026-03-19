@@ -26,7 +26,7 @@ export const MessageScreen = () => {
     <div className="flex flex-col items-center justify-center w-full">
       <div
         ref={cardRef}
-        className="bg-background/80 border-2 shadow-lg rounded-2xl p-8 max-w-5xl w-full text-center max-h-[600px] overflow-hidden"
+        className="relative bg-background/80 border-2 shadow-lg rounded-2xl p-8 max-w-5xl w-full text-center max-h-[600px] overflow-hidden"
       >
         <h1 className="text-3xl font-semibold text-gray-700 mb-6">Hovedstyret taler!</h1>
 
