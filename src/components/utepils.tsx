@@ -13,15 +13,14 @@ function getBarClass(score: number) {
 }
 
 export default function UtepilsCard() {
-  const { verdict, score, loading, error } = useUtepils();
-  console.log("Utepils verdict:", verdict, "Score:", score, "Loading:", loading, "Error:", error);
+  const { verdict, score } = useUtepils();
   const title = verdict?.title || "Laster...";
   const subtitle = verdict?.subtitle || "Henter utepils-data";
   const emoji = verdict?.emoji || "⏳";
 
   return (
     <div
-      className={`${getBackgroundClass(score)} rounded-2xl p-4 min-w-[240px] max-w-[320px] border border-yellow-200 font-sans`}
+      className={`${getBackgroundClass(score)} rounded-2xl p-4 min-w-60 max-w-[320px] border border-yellow-200 font-sans`}
     >
       <div className="flex justify-between items-start">
         <div>

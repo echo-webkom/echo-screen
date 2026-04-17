@@ -17,7 +17,6 @@ export function useUtepils() {
     fetch("https://utepils-ten.vercel.app/api/utepils/bergen")
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        console.log("Fetched utepils data:", res);
         return res.json();
       })
       .then((data) => {
