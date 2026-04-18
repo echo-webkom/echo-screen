@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-export default function HeartsMinimal() {
+export default function HeartsMinimal({ amount }: { amount: number }) {
   const ref = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function HeartsMinimal() {
     };
 
     const hearts: Heart[] = [];
-    const numHearts = randomInt(150, 200);
+    const numHearts = amount;
 
     for (let i = 0; i < numHearts; i += 1) {
       hearts.push({
@@ -120,7 +120,7 @@ export default function HeartsMinimal() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [amount]);
 
   return (
     <canvas

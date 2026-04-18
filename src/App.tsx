@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { ScreenCycle } from "./components/screen-cycle";
 import { CalendarScreen } from "./pages/calendar-screen";
 import { MessageScreen } from "./pages/message-screen";
@@ -25,21 +25,25 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  let visibleScreens = [CalendarScreen, TransportScreen];
-  if (isAugust()) {
-    visibleScreens.push(WelcomeScreen);
-  }
+  const visibleScreens = useMemo(() => {
+    if (vaffel?.status === "open") {
+      return [
+        <VaffelScreen queue={vaffel.queue} status={vaffel.status} total={vaffel.total} />,
+      ];
+    }
 
-  if (message?.title && message?.body && isMsgExpired(message._createdAt)) {
-    visibleScreens.push(MessageScreen);
-  }
+    const screens = [<CalendarScreen />, <TransportScreen />];
 
-  if (vaffel?.status === "open") {
-    console.log(JSON.stringify(vaffel));
-    visibleScreens = [
-      () => <VaffelScreen queue={vaffel.queue} status={vaffel.status} total={vaffel.total} />
-    ];
-  }
+    if (isAugust()) {
+      screens.push(<WelcomeScreen />);
+    }
+
+    if (message?.title && message?.body && isMsgExpired(message._createdAt)) {
+      screens.push(<MessageScreen />);
+    }
+
+    return screens;
+  }, [message, vaffel]);
 
   const isValentines = isValentinesSeason();
   document.body.classList.toggle("valentines", isValentines);

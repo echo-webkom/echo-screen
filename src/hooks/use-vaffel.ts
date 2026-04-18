@@ -24,6 +24,6 @@ export function useVaffel() {
 
       return { queue, status, total };
     },
-    staleTime: 1000
+    refetchInterval: 1000
   });
 }
