@@ -20,19 +20,16 @@ export default function VaffelScreen({ queue, status, total }: VaffelProps) {
       >
         <h1 className="text-3xl font-semibold mb-2">Vaffelkø</h1>
         <p className="text-lg font-semibold mb-6 space-x-2">
-          Status:{" "}
+          vaffel.status == {" "}
           <span
-            className={
-              status === "open" ? "text-green-600 font-semibold" : "text-red-500 font-semibold"
-            }
-          >
-            {status === "open" ? "Åpen" : "Stengt"}
+          className="font-normal">
+            {status === "open" ? "open" : "Stengt"}
           </span>
           <span>
-            Vafler stekt: <span className="font-normal">{total} </span>
+            vaffler.stekt =={" "} <span className="font-normal">{total} </span>
           </span>
           <span>
-            queue.length: <span className="font-normal">{queue.length} </span>
+            vaffler.queue.length =={" "} <span className="font-normal">{queue.length} </span>
           </span>
         </p>
 
