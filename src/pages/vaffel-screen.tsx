@@ -23,10 +23,10 @@ export default function VaffelScreen({ queue, status, total }: VaffelProps) {
           vaffel.status =={" "}
           <span className="font-normal">{status === "open" ? "open" : "Stengt"}</span>
           <span>
-            vaffler.stekt == <span className="font-normal">{total} </span>
+            vaffel.stekt == <span className="font-normal">{total} </span>
           </span>
           <span>
-            vaffler.queue.length == <span className="font-normal">{queue.length} </span>
+            vaffel.queue.length == <span className="font-normal">{queue.length} </span>
           </span>
         </p>
 
