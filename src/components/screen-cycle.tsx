@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProgressBar } from "./progress-bar";
 import { TRANSITION_TIME } from "../config";
+import { type ReactNode } from "react";
 
 type ScreenCycleProps = {
-  screens: Array<React.FC>;
+  screens: Array<ReactNode>;
 };
 
 export const ScreenCycle = ({ screens }: ScreenCycleProps) => {
@@ -43,8 +44,6 @@ export const ScreenCycle = ({ screens }: ScreenCycleProps) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [screens.length]);
 
-  const CurrentScreen = screens[screenIndex];
-
   return (
     <div className="flex-1">
       {/* `key` is hack to force unmount the progressbar on change */}
@@ -61,7 +60,7 @@ export const ScreenCycle = ({ screens }: ScreenCycleProps) => {
             transition={{ duration: 1 }}
             className="w-full h-full"
           >
-            <CurrentScreen />
+            {screens[screenIndex]}
           </motion.div>
         </AnimatePresence>
       </div>

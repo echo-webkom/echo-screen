@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { ScreenCycle } from "./components/screen-cycle";
 import { CalendarScreen } from "./pages/calendar-screen";
 import { MessageScreen } from "./pages/message-screen";
@@ -8,9 +8,12 @@ import { isAugust, isMsgExpired, isValentinesSeason } from "./utils/date";
 import WelcomeScreen from "./pages/welcome-screen";
 import { AutoReload } from "./components/auto-reload";
 import { useMessage } from "./hooks/use-message";
+import { useVaffel } from "./hooks/use-vaffel";
+import VaffelScreen from "./pages/vaffel-screen";
 
 export default function App() {
   const { data: message } = useMessage();
+  const { data: vaffel } = useVaffel();
 
   useEffect(() => {
     const interval = setInterval(
@@ -22,14 +25,25 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const visibleScreens = [CalendarScreen, TransportScreen];
-  if (isAugust()) {
-    visibleScreens.push(WelcomeScreen);
-  }
+  const visibleScreens = useMemo(() => {
+    if (vaffel?.status === "open") {
+      return [
+        <VaffelScreen queue={vaffel.queue} status={vaffel.status} total={vaffel.total} />,
+      ];
+    }
 
-  if (message?.title && message?.body && isMsgExpired(message._createdAt)) {
-    visibleScreens.push(MessageScreen);
-  }
+    const screens = [<CalendarScreen />, <TransportScreen />];
+
+    if (isAugust()) {
+      screens.push(<WelcomeScreen />);
+    }
+
+    if (message?.title && message?.body && isMsgExpired(message._createdAt)) {
+      screens.push(<MessageScreen />);
+    }
+
+    return screens;
+  }, [message, vaffel]);
 
   const isValentines = isValentinesSeason();
   document.body.classList.toggle("valentines", isValentines);
