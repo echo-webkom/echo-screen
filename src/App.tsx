@@ -28,7 +28,7 @@ export default function App() {
   const visibleScreens = useMemo(() => {
     if (vaffel?.status === "open") {
       return [
-        <VaffelScreen queue={vaffel.queue} status={vaffel.status} total={vaffel.total} />,
+        <VaffelScreen  queue={vaffel.queue} status={vaffel.status} total={vaffel.total} />,
       ];
     }
 

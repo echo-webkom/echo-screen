@@ -9,7 +9,7 @@ type VaffelProps = {
 
 export default function VaffelScreen({ queue, status, total }: VaffelProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <div className="w-full flex items-center justify-center">
       <WaffleRain amount={total} />
       <div className="bg-background/80 border-2 shadow-lg rounded-2xl p-8 max-w-2xl w-full text-center overflow-hidden">
         <h1 className="text-3xl font-semibold mb-2">Vaffelkø</h1>
@@ -17,7 +17,7 @@ export default function VaffelScreen({ queue, status, total }: VaffelProps) {
           Status:{" "}
           <span
             className={
-              status === "open" ? "text-green-600 font-semibold" : "text-red-500 font-semibold"
+              status === "open" ? "text-green-600 " : "text-red-500 "
             }
           >
             {status === "open" ? "Åpen" : "Stengt"}
@@ -31,12 +31,13 @@ export default function VaffelScreen({ queue, status, total }: VaffelProps) {
           <p className="text-gray-800">Ingen i køen</p>
         ) : (
           <ul>
-            {queue.map((person, index) => (
-              <li key={person.user_id} className="flex items-center gap-2 rounded-xl px-6 ">
-                <span className=" font-semibold">{index + 1}:</span>
+            {queue.slice(0,15).map((person, index) => (
+              <li key={person.user_id} className="flex items-center gap-4 rounded-xl px-6 ">
+                <span className=" font-semibold text-lg w-6 text-right">{index + 1}:</span>
                 <span>{person.display_name}</span>
               </li>
             ))}
+            <li className="flex px-6 text-lg font-semibold">flere...</li>
           </ul>
         )}
       </div>
