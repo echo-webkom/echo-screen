@@ -4,6 +4,7 @@ import Calendar from "../components/calendar";
 import { Orakel } from "../components/orakel";
 import TodaysBirthdays from "../components/todays-birthdays";
 import UtepilsCard from "../components/utepils";
+import { isUtepilsSeason } from "../utils/date";
 // import SnowMinimal from "../components/christmas-decoration";
 // import HeartsMinimal from "../components/valentines";
 
@@ -14,7 +15,7 @@ export const CalendarScreen = () => {
       <div className="flex gap-7">
         <Orakel />
         <TodaysBirthdays />
-        <UtepilsCard />
+        {isUtepilsSeason() && <UtepilsCard />}
       </div>
     </div>
   );

@@ -105,6 +105,14 @@ export function isValentinesSeason(date: Date = new Date()): boolean {
   return false;
 }
 
+export function isUtepilsSeason(date: Date = new Date()): boolean {
+  const month = date.getMonth(); // 0 = jan, 1 = feb
+
+  if (month >= 4 && month <= 8) return true; // mai til september
+
+  return false;
+}
+
 export function isMsgExpired(createdAt: string): boolean {
   const createdDate = new Date(createdAt);
   const expiryDate = new Date(createdDate.getTime() + 24 * 60 * 60 * 1000);
