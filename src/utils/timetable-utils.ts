@@ -6,7 +6,11 @@ export const getTimeDifferenceInMinutes = (time: string): number => {
 
 export const formatTime = (time: string): string => {
   const date = new Date(time);
-  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  return date.toLocaleTimeString("nb-NO", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
 };
 
 export const extractRouteNumber = (routeID: string): string => {
